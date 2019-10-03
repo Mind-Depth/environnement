@@ -2,7 +2,7 @@
 using UnityEngine;
 using System.Linq;
 
-public class SpiderAI : MonoBehaviour
+public class SpiderAI : RotableEntity
 {
     enum State
     {
@@ -60,27 +60,36 @@ public class SpiderAI : MonoBehaviour
         raycastSources.Add(backRaycastSource);
         raycastSources.Add(leftRaycastSource);
         raycastSources.Add(rightRaycastSource);
-        transform.RotateAround(transform.position, transform.up, Random.Range(0, 360));
-        if (Random.value < 0.5f)
-            Walk();
-        else
-            Stop();
+        //transform.RotateAround(transform.position, transform.up, Random.Range(0, 360));
+        //if (Random.value < 0.5f)
+        //    Walk();
+        //else
+        //    Stop();
+        Walk();
+    }
+
+    void SetTargetRotation(Quaternion target)
+    {
+        isRotating = true;
+        rotationProgress = 0;
+        originalRotation = transform.rotation;
+        targetRotation = target;
     }
 
     void RotateToNormal(Vector3 normal)
     {
-        isRotating = true;
-        rotationProgress = 0;
-        originalRotation = transform.rotation;
-        targetRotation = Quaternion.FromToRotation(transform.up, normal) * originalRotation;
+        SetTargetRotation(Quaternion.FromToRotation(transform.up, normal) * transform.rotation);
     }
+
+    //void Rotate()
+    //{
+    //    isRotating
+    //    Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
+    //}
 
     void RotateSideWay(float angle)
     {
-        isRotating = true;
-        rotationProgress = 0;
-        originalRotation = transform.rotation;
-        targetRotation = transform.rotation * Quaternion.Euler(0, angle, 0);
+        SetTargetRotation(transform.rotation * Quaternion.Euler(0, angle, 0));
     }
 
     void DownwardRaycast(out List<float> distances)
