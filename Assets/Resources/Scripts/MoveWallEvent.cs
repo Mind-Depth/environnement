@@ -28,7 +28,7 @@ public class MoveWallEvent : Event
         transform.Translate(tranlate_direction * (Time.deltaTime / speed));
     }
 
-    public override void ExecuteEvent(object data) {
+    public override void ExecuteEvent(GenerationMessage data) {
         start_event = true;
     }
 
