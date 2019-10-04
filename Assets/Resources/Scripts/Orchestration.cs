@@ -31,17 +31,27 @@ public class Orchestration : MonoBehaviour
         Console._instance.AddLog("Generate map.");
         GameObject map = Instantiate(ResourcesManager._instance.maps_dic[message.mapId], Vector3.zero, Quaternion.identity, null);
         Dictionary<ModelConfiguration.Type, List<string>> models_received = new Dictionary<ModelConfiguration.Type, List<string>>();
-        
+        List<Spawner> spawner = new List<Spawner>();
 
         foreach (GenerationMessage.ModelGroup model in message.modelGroups)
         {
             models_received.Add(model.type, model.modelIds);
         }
-        ReplaceAssets(models_received, map.transform);
+        ReplaceAssets(models_received, map.transform, spawner);
+        if (spawner.Count != 0)
+        {
+            spawner.OrderBy(x => Guid.NewGuid()).FirstOrDefault();
+            float limit = spawner.Count * message.fearIntensity;
+            limit = Mathf.Clamp(limit, 1.0f, spawner.Count);
+            for (int i = 0; i < limit; i++)
+            {
+                spawner[i].Activate(message.fearIntensity);
+            }
+        }
         RoomManager._instance.MapIsReady(map);
     }
 
-    public void ReplaceAssets(Dictionary<ModelConfiguration.Type, List<string>> models_received, Transform parent)
+    public void ReplaceAssets(Dictionary<ModelConfiguration.Type, List<string>> models_received, Transform parent, List<Spawner> spawner)
     {
         List<Transform> children = new List<Transform>();
         foreach (Transform child in parent)
@@ -51,7 +61,7 @@ public class Orchestration : MonoBehaviour
         foreach (Transform child in children)
         {
             if (child.transform.childCount > 0)
-                ReplaceAssets(models_received, child);
+                ReplaceAssets(models_received, child, spawner);
             TemplateTypeModel config = child.GetComponent<TemplateTypeModel>();
             if (config != null)
             {
@@ -62,7 +72,7 @@ public class Orchestration : MonoBehaviour
                 GameObject obj = Instantiate(ResourcesManager._instance.assets_dic[id_asset], child.transform.position, child.transform.rotation, parent.transform);
                 obj.transform.localScale = child.localScale;
                 if (type == ModelConfiguration.Type.Mob)
-                    obj.GetComponent<Spawner>().Activate(0.5f);
+                    spawner.Add(obj.GetComponent<Spawner>());
                 Destroy(child.gameObject);
             }
         }

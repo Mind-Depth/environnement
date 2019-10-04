@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 482198}
   - component: {fileID: 3365170}
   - component: {fileID: 2373450}
-  - component: {fileID: 1098171227976646161}
   - component: {fileID: 6661238738881376683}
+  - component: {fileID: 8745046950688726625}
   m_Layer: 0
   m_Name: SM_Env_Tiles_Rune_03
   m_TagString: Untagged
@@ -79,19 +79,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &1098171227976646161
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 153710}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 5.0006294, y: 0.10141499, z: 5}
-  m_Center: {x: -2.4996815, y: 0.0506775, z: 2.5000038}
 --- !u!114 &6661238738881376683
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -108,3 +95,17 @@ MonoBehaviour:
   id: 
   description: 
   fears: 0000000001000000
+--- !u!64 &8745046950688726625
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 153710}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 4300000, guid: dee9227461d7e2e4bb7654485cb974f4, type: 3}
