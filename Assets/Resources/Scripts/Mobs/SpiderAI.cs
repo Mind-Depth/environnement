@@ -12,7 +12,6 @@ public class SpiderAI : RotableEntity
     }
 
     Animator anim;
-    Vector3 radius;
     int layerMask;
 
     float walkingSpeed;
@@ -26,6 +25,8 @@ public class SpiderAI : RotableEntity
     Quaternion originalRotation;
     Quaternion targetRotation;
     List<Transform> raycastSources = new List<Transform>(2);
+
+    public Vector3 radius = new Vector3(4.6f, 1.5f, 5f);
 
     public float minWalkDuration = 10f;
     public float maxWalkDuration = 20f;
@@ -53,19 +54,18 @@ public class SpiderAI : RotableEntity
     {
         anim = gameObject.GetComponent<Animator>();
         layerMask = ~(1 << gameObject.layer);
-        radius = GetComponentInChildren<BoxCollider>().bounds.size / 2;
+        radius = Vector3.Scale(radius, transform.localScale);
         walkingSpeed = radius.z * walkingSpeedFactor;
         groundHovering = radius.y * groundHoveringFactor;
         raycastSources.Add(frontRaycastSource);
         raycastSources.Add(backRaycastSource);
         raycastSources.Add(leftRaycastSource);
         raycastSources.Add(rightRaycastSource);
-        //transform.RotateAround(transform.position, transform.up, Random.Range(0, 360));
-        //if (Random.value < 0.5f)
-        //    Walk();
-        //else
-        //    Stop();
-        Walk();
+        transform.RotateAround(transform.position, transform.up, Random.Range(0, 360));
+        if (Random.value < 0.5f)
+            Walk();
+        else
+            Stop();
     }
 
     void SetTargetRotation(Quaternion target)
@@ -81,6 +81,7 @@ public class SpiderAI : RotableEntity
         SetTargetRotation(Quaternion.FromToRotation(transform.up, normal) * transform.rotation);
     }
 
+    //TODO
     //void Rotate()
     //{
     //    isRotating
@@ -230,6 +231,7 @@ public class SpiderAI : RotableEntity
 
     void Update()
     {
+        Debug.DrawLine(frontRaycastSource.position, frontRaycastSource.position - transform.up * radius.y, Color.magenta);
         stateDuration -= Time.deltaTime;
         switch (state)
         {
