@@ -231,7 +231,6 @@ public class SpiderAI : RotableEntity
 
     void Update()
     {
-        Debug.DrawLine(frontRaycastSource.position, frontRaycastSource.position - transform.up * radius.y, Color.magenta);
         stateDuration -= Time.deltaTime;
         switch (state)
         {
