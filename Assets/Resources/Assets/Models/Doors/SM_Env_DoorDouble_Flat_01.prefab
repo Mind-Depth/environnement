@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 488452}
   - component: {fileID: 3392316}
   - component: {fileID: 2353316}
+  - component: {fileID: 5088864277743137457}
   m_Layer: 0
   m_Name: SM_Env_DoorDouble_Flat_01
   m_TagString: Untagged
@@ -77,3 +78,17 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &5088864277743137457
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 115464}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 4300000, guid: f1f801b1833861844a16273cce44aaea, type: 3}

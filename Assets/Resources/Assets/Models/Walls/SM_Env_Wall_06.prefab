@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3316714}
   - component: {fileID: 2331704}
   - component: {fileID: 4316359319057058742}
-  - component: {fileID: 6358134579758520952}
+  - component: {fileID: 1712911230955889396}
   m_Layer: 0
   m_Name: SM_Env_Wall_06
   m_TagString: Untagged
@@ -95,8 +95,8 @@ MonoBehaviour:
   id: 
   description: 
   fears: 0000000001000000
---- !u!65 &6358134579758520952
-BoxCollider:
+--- !u!64 &1712911230955889396
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -105,6 +105,7 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 5.2765846, y: 5.2998095, z: 0.5991478}
-  m_Center: {x: -2.4877815, y: 2.5487618, z: 0.0016269684}
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 4300000, guid: eb1e30a59e08c66498aaa491e0fa8821, type: 3}

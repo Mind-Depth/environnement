@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3351782}
   - component: {fileID: 2305866}
   - component: {fileID: 102629254051790548}
-  - component: {fileID: 6020460502747255475}
+  - component: {fileID: 9142975892400884293}
   m_Layer: 0
   m_Name: SM_Env_Tiles_09
   m_TagString: Untagged
@@ -95,8 +95,8 @@ MonoBehaviour:
   id: 
   description: 
   fears: 0000000001000000
---- !u!65 &6020460502747255475
-BoxCollider:
+--- !u!64 &9142975892400884293
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -105,6 +105,7 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 5.0000114, y: 0.12793192, z: 5}
-  m_Center: {x: -2.4999943, y: 0.060725965, z: 2.500001}
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 4300000, guid: 8573a7e482e05fa47ac13d09ac80cce4, type: 3}

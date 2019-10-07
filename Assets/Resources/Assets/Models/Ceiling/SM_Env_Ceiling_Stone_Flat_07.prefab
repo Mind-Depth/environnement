@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3310418}
   - component: {fileID: 2372570}
   - component: {fileID: 7220989904898039641}
+  - component: {fileID: 1226351062468781712}
   m_Layer: 0
   m_Name: SM_Env_Ceiling_Stone_Flat_07
   m_TagString: Untagged
@@ -93,5 +94,18 @@ MonoBehaviour:
   type: 1
   id: 
   description: 
-  fearIntensity: 1
   fears: 0000000001000000
+--- !u!64 &1226351062468781712
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 131250}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 4300000, guid: ddf3d77960b6be743b0ac25e2f50d188, type: 3}

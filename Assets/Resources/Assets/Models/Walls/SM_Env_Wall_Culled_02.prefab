@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 418984}
   - component: {fileID: 3337386}
   - component: {fileID: 2391210}
-  - component: {fileID: 2304105007263367173}
+  - component: {fileID: 1265786694010260586}
+  - component: {fileID: 5159613358779305774}
   m_Layer: 0
   m_Name: SM_Env_Wall_Culled_02
   m_TagString: Untagged
@@ -78,8 +79,8 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &2304105007263367173
-BoxCollider:
+--- !u!64 &1265786694010260586
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -88,6 +89,23 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 5.178295, y: 5.1667123, z: 0.52577627}
-  m_Center: {x: -2.4718971, y: 2.5412667, z: -0.0051692277}
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 4300000, guid: 10fa0445f55803d4bb105c480c54f530, type: 3}
+--- !u!114 &5159613358779305774
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 198756}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d68bb9f72453fa4ca8ea82ba3db7c1b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 2
+  id: 
+  description: 
+  fears: 0000000001000000
