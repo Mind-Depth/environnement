@@ -2,9 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Rendering.PostProcessing;
 
 public class Teleporter : MonoBehaviour
 {
+    public PostProcessVolume ppv;
+    public PostProcessProfile pppSave;
     public static Teleporter _instance = null;
     public Transform player;
     public Text indication;
@@ -29,7 +32,9 @@ public class Teleporter : MonoBehaviour
     {
         indication.gameObject.SetActive(false);
     }
-
+    public PostProcessVolume getPPV() {
+        return ppv;
+    }
     public void TeleportPlayer()
     {
         if (!is_teleporting)
@@ -37,6 +42,7 @@ public class Teleporter : MonoBehaviour
             old_player_position = player.position;
             player.position = RoomManager._instance.pt_tp_player_waiting.position;
             is_teleporting = true;
+            ppv.profile = pppSave;
             RoomManager._instance.RequestRoom();
         }
     }

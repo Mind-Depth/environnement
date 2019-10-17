@@ -3,6 +3,7 @@ using UnityEngine;
 using System.IO;
 using UnityEditor;
 using System;
+using UnityEngine.Rendering.PostProcessing;
 
 /*
  * Charge l'ensemble des ressources graphiques et sonores qui vont être utilisées dans le jeu.
@@ -10,6 +11,7 @@ using System;
 public class ResourcesManager : MonoBehaviour {
 
     public static ResourcesManager _instance = null;
+    public PostProcessVolume PPV;
     public GameObject[] assets;
     public GameObject[] maps;
     public GameObject[] events;
@@ -34,6 +36,9 @@ public class ResourcesManager : MonoBehaviour {
         }
     }
 
+    public PostProcessVolume getPPV() {
+        return PPV;
+    }
     void CreateModelFiles()
     {
         /* Crée le dossier model */
@@ -81,7 +86,7 @@ public class ResourcesManager : MonoBehaviour {
             /* Données à ajouter en format JSON.*/
             string json = JsonUtility.ToJson(event_information);
             File.WriteAllText(file_events.FullName, json);
-        }
+    } 
         Debug.Log("Files : events files created.");
     }
 
@@ -120,7 +125,7 @@ public class ResourcesManager : MonoBehaviour {
         CreateMapFiles();
         Console._instance.AddLog("Files : maps files created.");
         CreateEventFiles();
-        Console._instance.AddLog("Files : events files created.");
+        //Console._instance.AddLog("Files : events files created.");
         CreateEnumFiles();
         Console._instance.AddLog("Files : enums file created.");
     }
