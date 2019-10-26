@@ -32,6 +32,7 @@ public class GenerationMessage
         Terminate,
         Initialize,
         RoomConfiguration,
+        FearLevel,
         Start,
         Quit,
     };
