@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 using System;
+using Sam;
 
 /*
  * Classe qui, via la liste d'assets défini par la partie génération, place les différents éléments.
@@ -49,6 +50,7 @@ public class Orchestration : MonoBehaviour
             }
         }
         RoomManager._instance.MapIsReady(map);
+        TriggerManager._instance.UpdateRoomConfig(message.fear, message.fearIntensity);
     }
 
     public void ReplaceAssets(Dictionary<ModelConfiguration.Type, List<string>> models_received, Transform parent, List<Spawner> spawner)
