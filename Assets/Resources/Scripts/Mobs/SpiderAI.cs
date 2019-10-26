@@ -20,10 +20,6 @@ public class SpiderAI : RotableEntity
     State state;
     float stateDuration;
 
-    bool isRotating = false;
-    float rotationProgress = 0f;
-    Quaternion originalRotation;
-    Quaternion targetRotation;
     List<Transform> raycastSources = new List<Transform>(2);
 
     public Vector3 radius = new Vector3(4.6f, 1.5f, 5f);
@@ -68,31 +64,6 @@ public class SpiderAI : RotableEntity
             Stop();
     }
 
-    void SetTargetRotation(Quaternion target)
-    {
-        isRotating = true;
-        rotationProgress = 0;
-        originalRotation = transform.rotation;
-        targetRotation = target;
-    }
-
-    void RotateToNormal(Vector3 normal)
-    {
-        SetTargetRotation(Quaternion.FromToRotation(transform.up, normal) * transform.rotation);
-    }
-
-    //TODO
-    //void Rotate()
-    //{
-    //    isRotating
-    //    Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
-    //}
-
-    void RotateSideWay(float angle)
-    {
-        SetTargetRotation(transform.rotation * Quaternion.Euler(0, angle, 0));
-    }
-
     void DownwardRaycast(out List<float> distances)
     {
         distances = new List<float>(raycastSources.Count);
@@ -121,18 +92,10 @@ public class SpiderAI : RotableEntity
         return Physics.Raycast(rightRaycastSource.position, rightRaycastSource.forward, out hit, radius.x, layerMask);
     }
 
-    void UpdateRotation(float speed)
-    {
-        rotationProgress += Time.deltaTime * speed;
-        transform.rotation = Quaternion.Lerp(originalRotation, targetRotation, rotationProgress);
-        isRotating = rotationProgress < 1;
-    }
-
     void UpdateWalkingRotation()
     {
         // Lerp transform
-        if (isRotating)
-            UpdateRotation(upwardRotationSpeed);
+        UpdateRotation(upwardRotationSpeed);
 
         // Find obstacle
         if (FrontRaycast(out RaycastHit hit))
@@ -155,7 +118,7 @@ public class SpiderAI : RotableEntity
             return;
         }
 
-        isRotating = false;
+        StopRotation();
         transform.RotateAround(transform.position, transform.right, Time.deltaTime * downwardRotationSpeed);
     }
 
@@ -204,9 +167,7 @@ public class SpiderAI : RotableEntity
 
     void UpdateTurning()
     {
-        if (isRotating)
-            UpdateRotation(turningSpeed);
-        else
+        if (!UpdateRotation(turningSpeed))
             Walk();
     }
 

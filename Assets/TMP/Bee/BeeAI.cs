@@ -10,13 +10,13 @@ public class BeeAI : RotableEntity
     bool hasTarget;
     Vector3 target;
 
-    public float minIdleDuration = 0f;
-    public float maxIdleDuration = 0f;
+    public float minIdleDuration = 5f;
+    public float maxIdleDuration = 5f;
 
-    public float minFlyDuration = 1f;
-    public float maxFlyDuration = 1f;
+    public float minFlyDuration = 30f;
+    public float maxFlyDuration = 30f;
 
-    public float takeOffUnitAngleLerp = 0.6f;
+    public float takeOffUnitAngleLerp = 0.5f;
 
     void Start()
     {
@@ -49,27 +49,57 @@ public class BeeAI : RotableEntity
             Fly();
     }
 
+    void FindTarget(Vector3 direction)
+    {
+        hasTarget = true;
+        target = Random.onUnitSphere;
+        target = Quaternion.Lerp(Quaternion.identity, Quaternion.FromToRotation(target, direction), takeOffUnitAngleLerp) * target;
+        //TODO
+        //raycast
+        // if collide, dont go
+        // else random distance < collision
+        RotateTo2DProjection(target);
+        Debug.DrawLine(transform.position, transform.position + target * 20, Color.black, 1f);
+    }
+
+    void GoToTarget()
+    {
+        //if (transform.position == target)
+        if (Random.value < 0.02)
+        {
+            FindTarget(transform.forward);
+            return;
+        }
+
+        /*
+        Vector3 direction = target - transform.position;
+        Vector3 movment = direction.normalized * Time.deltaTime * 20; // TODO speed
+        if (movment.magnitude > direction.magnitude)
+            movment = direction;
+        transform.position += movment;
+        */
+        transform.position += Vector3.ProjectOnPlane(target, transform.right) * Time.deltaTime * 100; //TODO speed
+    }
+
+    void Land()
+    {
+        // Check is somewhere to stop
+        //Physics.OverlapSphere;
+        //Collider.ClosestPoint
+        // Else FindTarget
+        Stop();
+        return;
+    }
+
     void UpdateFlying()
     {
-        if (!hasTarget)
-        {
-            hasTarget = true;
-            target = Random.onUnitSphere;
-            target = Quaternion.Lerp(Quaternion.identity, Quaternion.FromToRotation(target, transform.up), takeOffUnitAngleLerp) * target;
-            // Distance ?
-            Debug.DrawLine(transform.position, transform.position + target * 100, Color.black, 1f);
-        }
+        UpdateRotation(1f); //TODO Speed
+        /*if (stateDuration < 0f)
+            Land();
+        else*/ if (hasTarget)
+            GoToTarget();
         else
-        {
-//            Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
-        }
-        // Do stuff
-
-        if (stateDuration > 0f)
-            return;
-
-        // Check if landing is possible
-        Stop();
+            FindTarget(transform.up);
     }
 
     void Update()
