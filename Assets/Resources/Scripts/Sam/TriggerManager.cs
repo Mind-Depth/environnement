@@ -140,5 +140,12 @@ namespace Sam
             Debug.Log("DebugLog -- " + msg);
             Console._instance.AddLog("ConsoleInstance -- " + msg);
         }
+
+        public void UpdateTriggerEvents(SamObject eventTriggered)
+        {
+            string msg = "[SAM] received a event is trigger " + eventTriggered.name;
+            Debug.Log("DebugLog -- " + msg);
+            Console._instance.AddLog("ConsoleInstance --" + msg);
+        }
     }
 }
