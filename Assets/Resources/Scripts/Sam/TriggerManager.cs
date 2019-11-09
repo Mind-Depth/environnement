@@ -33,6 +33,11 @@ namespace Sam
         public float startAmbianceLine = 10.0f;
         public float startPrez = 1.0f;
 
+        public int intervalTurn = 1;
+        private float nextTurn = 0.0f;
+        public bool introduction = true;
+        private int fearLevel = 0;
+
         void Awake()
         {
             // Singleton
@@ -74,45 +79,59 @@ namespace Sam
         public int RandomNumber(int max)
         { return UnityEngine.Random.Range(0, max); }
 
-        void timerEnded()
+        void TimerEnded()
         {
-            historyManager.AddHistoryPoint(rooms[RandomNumber(rooms.Count)], currentFear, startTime);
+            historyManager.AddHistoryPoint(rooms[RandomNumber(rooms.Count)], currentFear, startTime, fearLevel);
             histories = historyManager.GetHistories();
 
-            moodManager.ComputeMood(histories);
+            //moodManager.ComputeMood(histories);
   
             this.currenMood = moodManager.GetMoodName();
             List<Line> lines = samLineManager.GetLinesByMood(this.currenMood);
             if (this.startTime > this.startAmbianceLine)
             {
-                Debug.Log("current Mood (" + moodManager.GetMoodValue() + ") = " + this.currenMood);
+                //Debug.Log("current Mood (" + moodManager.GetMoodValue() + ") = " + this.currenMood);
                 int lineToPlay = RandomNumber(lines.Count - 1);
-                samLineManager.Play(lines[lineToPlay].name);
+               // samLineManager.Play(lines[lineToPlay].name);
                 
             }
 
             if (this.startTime > this.startPrez && this.startTime < this.startAmbianceLine)
             {
-                 samLineManager.Play(this.samLinePrez.name);
+                Debug.Log("Intro started");
+                // samLineManager.Play(this.samLinePrez.name);
             }
 
             targetTime = 7.0f;
         }
 
-        void Update()
+
+       private void Update()
         {
-            targetTime -= Time.deltaTime;
-            startTime += Time.deltaTime;
-            if (targetTime <= 0.0f)
+            if (Time.time >= nextTurn)
             {
-                timerEnded();
+                if (!introduction)
+                {
+                    moodManager.ComputeMood(fearLevel);
+                }
+                nextTurn += intervalTurn;
             }
         }
 
-        public void UpdateFear(float fearLevel)
+        public void UpdateFear(float newFearLevel)
         {
-            Debug.Log("DebugLog/ [SAM] received a fear level of " + fearLevel.ToString());
-            Console._instance.AddLog("ConsoleInstance/ [SAM] received a fear level of " + fearLevel.ToString());
+            fearLevel = (int)newFearLevel;
+            Debug.Log("fearLevel :: " + fearLevel);
+            Debug.Log("SAM mood :: " + moodManager.GetMoodValue());
+            //Debug.Log("DebugLog/ [SAM] received a fear level of " + fearLevel.ToString());
+            //Console._instance.AddLog("ConsoleInstance/ [SAM] received a fear level of " + fearLevel.ToString());
+        }
+
+        public void UpdateRoom()
+        {
+
+            Debug.Log("DebugLog/ [SAM] received a room config of " + roomConfig.ToString());
+            //Console._instance.AddLog("ConsoleInstance/ [SAM] received a room config of " + roomConfig.ToString());
         }
     }
 }

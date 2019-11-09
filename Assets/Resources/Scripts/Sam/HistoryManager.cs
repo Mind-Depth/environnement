@@ -14,14 +14,14 @@ namespace Sam
         public int RandomNumber(int max)
         { return UnityEngine.Random.Range(0, max); }
 
-        public void AddHistoryPoint(string currentRoom, List<string> currentFears, float startTime)
+        public void AddHistoryPoint(string currentRoom, List<string> currentFears, float startTime, int fearLevel)
         {
             History history = new History();
 
-            history.fearLevelDelta = RandomNumber(200);
+            history.fearLevelDelta = fearLevel;
             history.currentRoom = currentRoom;
             history.currentFears = currentFears;
-            history.timeSpend = startTime;
+            history.timeSpend = Time.time;
 
             histories.Add(history);
         }

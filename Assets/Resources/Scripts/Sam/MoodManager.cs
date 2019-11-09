@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using System.Collections;
+using System.Linq;
 
 namespace Sam
 {
@@ -17,8 +18,9 @@ namespace Sam
 
     public class MoodManager : MonoBehaviour
     {
-        private float mood = 100.0f;
-        public int    computingThreshold = 2;
+        private float   mood = 100.0f;
+        public int  computingThreshold = 2;
+        float   sinceLastSetMood = 0;
 
         public MoodManager(float mood)
         {
@@ -70,7 +72,19 @@ namespace Sam
             return newValue - oldValue;
         }
 
-        public float ComputeMood(List<History> histories)
+        public void ComputeMood(float fearLevel)
+        {
+            if (fearLevel == 0)
+            {
+                this.mood -= 1;
+            }
+            else if (fearLevel == 1)
+            {
+                this.mood += 1;
+            }
+        }
+
+        /* public float ComputeMood(List<History> histories)
         {
             float result = 0;
 
@@ -78,13 +92,19 @@ namespace Sam
             {
                 for (int i = histories.Count - (computingThreshold); i < histories.Count; i++)
                 {
-                   result += ComputeGap(histories[i].fearLevelDelta, histories[i - 1].fearLevelDelta);
+                  // result += ComputeGap(histories[i].fearLevelDelta, histories[i - 1].fearLevelDelta);
+                   result += histories[i].fearLevelDelta;
+                    Debug.Log(histories[i].fearLevelDelta);
                 }
-                this.SetMood(this.mood + (result / computingThreshold));
+                // this.SetMood(this.mood + (result / computingThreshold));
+                
+                Debug.Log("Result pourcent:: " + ((result / computingThreshold) * 100));
+                
+                this.SetMood(this.mood + ((result / computingThreshold) * 100));
             }
-           
+
             return mood;
-        }
+        }*/
 
     } 
 }
