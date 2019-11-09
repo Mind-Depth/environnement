@@ -3,6 +3,7 @@ using UnityEngine;
 using System.IO;
 using UnityEditor;
 using System;
+using UnityEngine.Rendering.PostProcessing;
 
 /*
  * Charge l'ensemble des ressources graphiques et sonores qui vont être utilisées dans le jeu.
@@ -10,6 +11,7 @@ using System;
 public class ResourcesManager : MonoBehaviour {
 
     public static ResourcesManager _instance = null;
+    public PostProcessVolume PPV;
     public GameObject[] assets;
     public GameObject[] maps;
     public GameObject[] events;
@@ -34,10 +36,14 @@ public class ResourcesManager : MonoBehaviour {
         }
     }
 
+    public PostProcessVolume getPPV() {
+        return PPV;
+    }
     void CreateModelFiles()
     {
         /* Crée le dossier model */
-        Directory.CreateDirectory(Configuration.root + "\\" + Manager.configuration.generated.models);
+        string dir = Configuration.last_root + "\\" + Manager.configuration.generated.models;
+        Directory.CreateDirectory(dir);
 
         ModelConfiguration asset_informations;
         foreach (GameObject asset in assets)
@@ -50,7 +56,7 @@ public class ResourcesManager : MonoBehaviour {
 
             /* Creation des dossiers du path si ces derniers sont inexistants.
             ** Creation du fichier.*/
-            FileInfo file_models = new FileInfo(Configuration.root + "\\" + Manager.configuration.generated.models + "\\" + asset_informations.id + ".json");
+            FileInfo file_models = new FileInfo(dir + "\\" + asset_informations.id + ".json");
             file_models.Directory.Create();
 
             /* Données à ajouter en format JSON.*/
@@ -63,7 +69,8 @@ public class ResourcesManager : MonoBehaviour {
     void CreateEventFiles()
     {
         /* Crée le dossier event */
-        Directory.CreateDirectory(Configuration.root + "\\" + Manager.configuration.generated.events);
+        string dir = Configuration.last_root + "\\" + Manager.configuration.generated.events;
+        Directory.CreateDirectory(dir);
 
         EventConfiguration event_information;
         foreach (GameObject ev in events)
@@ -75,20 +82,21 @@ public class ResourcesManager : MonoBehaviour {
 
             /* Creation des dossiers du path si ces derniers sont inexistants.
             ** Creation du fichier.*/
-            FileInfo file_events = new FileInfo(Configuration.root + "\\" + Manager.configuration.generated.events + "\\" + event_information.id + ".json");
+            FileInfo file_events = new FileInfo(dir + "\\" + event_information.id + ".json");
             file_events.Directory.Create();
 
             /* Données à ajouter en format JSON.*/
             string json = JsonUtility.ToJson(event_information);
             File.WriteAllText(file_events.FullName, json);
-        }
+    } 
         Debug.Log("Files : events files created.");
     }
 
     void CreateMapFiles()
     {
         /* Crée le dossier map */
-        Directory.CreateDirectory(Configuration.root + "\\" + Manager.configuration.generated.maps);
+        string dir = Configuration.last_root + "\\" + Manager.configuration.generated.maps;
+        Directory.CreateDirectory(dir);
 
         MapConfiguration map_config;
         foreach (GameObject map in maps)
@@ -97,7 +105,7 @@ public class ResourcesManager : MonoBehaviour {
             map_config = map.GetComponent<MapConfiguration>();
             map_config.id = System.Guid.NewGuid().ToString();
             maps_dic.Add(map_config.id, map);
-            FileInfo file_maps = new FileInfo(Configuration.root + "\\" + Manager.configuration.generated.maps + "\\" + map_config.id + ".json");
+            FileInfo file_maps = new FileInfo(dir + "\\" + map_config.id + ".json");
             file_maps.Directory.Create();
             string json = JsonUtility.ToJson(map_config);
             File.WriteAllText(file_maps.FullName, json);
@@ -108,7 +116,7 @@ public class ResourcesManager : MonoBehaviour {
     void CreateEnumFiles()
     {
         string json = JsonUtility.ToJson(EnumLists.instance);
-        string file = new FileInfo(Configuration.root + "\\" + Manager.configuration.generated.enums).FullName;
+        string file = new FileInfo(Configuration.last_root + "\\" + Manager.configuration.generated.enums).FullName;
         File.WriteAllText(file, json);
         Debug.Log("Files : enums file created.");
     }
@@ -120,7 +128,7 @@ public class ResourcesManager : MonoBehaviour {
         CreateMapFiles();
         Console._instance.AddLog("Files : maps files created.");
         CreateEventFiles();
-        Console._instance.AddLog("Files : events files created.");
+        //Console._instance.AddLog("Files : events files created.");
         CreateEnumFiles();
         Console._instance.AddLog("Files : enums file created.");
     }
@@ -136,7 +144,7 @@ public class ResourcesManager : MonoBehaviour {
         };
         foreach (string s in generated)
         {
-            string path = Configuration.root + "\\" + s;
+            string path = Configuration.last_root + "\\" + s;
             if (Directory.Exists(path))
                 Directory.Delete(path, true);
             else if (File.Exists(path))

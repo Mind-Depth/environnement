@@ -2,12 +2,13 @@
 using System.IO.Pipes;
 using UnityEngine.Assertions;
 using System;
-using System.Linq;
+using System.ComponentModel;
 
 public class PipeObject
 {
     static System.Text.Encoding encoding = System.Text.Encoding.ASCII;
 
+    bool connected = false;
     NamedPipeClientStream pipe_in;
     NamedPipeClientStream pipe_out;
 
@@ -17,12 +18,16 @@ public class PipeObject
         pipe_out = new NamedPipeClientStream(".", name + "_" + Manager.configuration.connection.client_to_server, PipeDirection.Out);
     }
 
-    public void Connect()
+    public bool Connect()
     {
+        if (connected)
+            return false;
         pipe_in.Connect();
-        Assert.IsTrue(pipe_in.CanRead);
         pipe_out.Connect();
+        Assert.IsTrue(pipe_in.CanRead);
         Assert.IsTrue(pipe_out.CanWrite);
+        connected = true;
+        return true;
     }
 
     public void Close()
@@ -62,10 +67,8 @@ public class Client
     {
         pipeClient = new PipeObject(Manager.configuration.connection.environment);
         Debug.Log("Attempting to connect to pipe...");
-        pipeClient.Connect();
         Debug.Log("Pipe connected");
         reader = new Reader();
-        reader.Start();
         read = true;
     }
 
@@ -75,6 +78,11 @@ public class Client
 
     public void Update()
     {
+        try {
+            if (pipeClient.Connect())
+                reader.Start();
+        }
+        catch (Win32Exception){ return; }
         while (Manager._instance.queue_watchers_data.Count > 0)
             SendMessage(Manager._instance.queue_watchers_data.Dequeue());
         if (read)
@@ -93,9 +101,7 @@ public class Reader : AThreadJob {
     protected override void ThreadFunction()
     {
         ref PipeObject pipe = ref Manager._instance.generation_client.pipeClient;
-  
-        string str;
-        while (pipe.Read(out str))
+        while (pipe.Read(out string str))
         {
             foreach (string asset_data in str.Split(new string[] { "\r\n" }, StringSplitOptions.None))
             {

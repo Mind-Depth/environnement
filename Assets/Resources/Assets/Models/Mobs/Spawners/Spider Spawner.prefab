@@ -63,5 +63,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 5
   id: 
-  description: 
+  description: toto
   fears: 00000000
