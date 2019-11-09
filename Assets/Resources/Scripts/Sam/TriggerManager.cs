@@ -74,7 +74,7 @@ namespace Sam
 
             moodManager = new MoodManager(50.0f);
         }
-        
+
         // Return a number between 0 and the variable max
         public int RandomNumber(int max)
         { return UnityEngine.Random.Range(0, max); }
@@ -85,7 +85,7 @@ namespace Sam
             histories = historyManager.GetHistories();
 
             //moodManager.ComputeMood(histories);
-  
+
             this.currenMood = moodManager.GetMoodName();
             List<Line> lines = samLineManager.GetLinesByMood(this.currenMood);
             if (this.startTime > this.startAmbianceLine)
@@ -93,7 +93,7 @@ namespace Sam
                 //Debug.Log("current Mood (" + moodManager.GetMoodValue() + ") = " + this.currenMood);
                 int lineToPlay = RandomNumber(lines.Count - 1);
                // samLineManager.Play(lines[lineToPlay].name);
-                
+
             }
 
             if (this.startTime > this.startPrez && this.startTime < this.startAmbianceLine)
@@ -129,9 +129,16 @@ namespace Sam
 
         public void UpdateRoom()
         {
+            string msg = "[SAM] received a fear level of " + fearLevel.ToString();
+            Debug.Log("DebugLog -- " + msg);
+            Console._instance.AddLog("ConsoleInstance -- " + msg);
+        }
 
-            Debug.Log("DebugLog/ [SAM] received a room config of " + roomConfig.ToString());
-            //Console._instance.AddLog("ConsoleInstance/ [SAM] received a room config of " + roomConfig.ToString());
+        public void UpdateRoomConfig(Fear fearType, float fearIntensity)
+        {
+            string msg = "[SAM] received a room config of type " + fearType.ToString() + " and intensity " + fearIntensity.ToString();
+            Debug.Log("DebugLog -- " + msg);
+            Console._instance.AddLog("ConsoleInstance -- " + msg);
         }
     }
 }
