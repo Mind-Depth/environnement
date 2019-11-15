@@ -50,7 +50,8 @@ public class Orchestration : MonoBehaviour
             }
         }
         RoomManager._instance.MapIsReady(map);
-        TriggerManager._instance.UpdateRoomConfig(message.fear, message.fearIntensity);
+        SamTags.FetchFromRoom(map, out List<SamTags> tags);
+        TriggerManager._instance.UpdateRoomConfig(tags, message.fear, message.fearIntensity);
     }
 
     public void ReplaceAssets(Dictionary<ModelConfiguration.Type, List<string>> models_received, Transform parent, List<Spawner> spawner)

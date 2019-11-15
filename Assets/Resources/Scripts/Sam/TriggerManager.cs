@@ -134,7 +134,7 @@ namespace Sam
             Console._instance.AddLog("ConsoleInstance -- " + msg);
         }
 
-        public void UpdateRoomConfig(Fear fearType, float fearIntensity)
+        public void UpdateRoomConfig(List<SamTags> tags, Fear fearType, float fearIntensity)
         {
             string msg = "[SAM] received a room config of type " + fearType.ToString() + " and intensity " + fearIntensity.ToString();
             Debug.Log("DebugLog -- " + msg);
