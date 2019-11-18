@@ -502,17 +502,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 6232797505741544321, guid: d88f263a4159b8d4897f3fed132d4546,
-        type: 3}
-      propertyPath: m_Name
-      value: PostProcess
-      objectReference: {fileID: 0}
     - target: {fileID: 6232797505741544320, guid: d88f263a4159b8d4897f3fed132d4546,
         type: 3}
       propertyPath: sharedProfile
       value: 
       objectReference: {fileID: 11400000, guid: a0409a5a85f397640b7a2477df69062b,
         type: 2}
+    - target: {fileID: 6232797505741544321, guid: d88f263a4159b8d4897f3fed132d4546,
+        type: 3}
+      propertyPath: m_Name
+      value: PostProcess
+      objectReference: {fileID: 0}
     - target: {fileID: 6232797505741544323, guid: d88f263a4159b8d4897f3fed132d4546,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1504,6 +1504,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 627f35f1f75c3a041be4fcae43ac9787, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  configuration_root: 
 --- !u!4 &1767551141
 Transform:
   m_ObjectHideFlags: 0
