@@ -61,6 +61,26 @@ namespace Sam
             return samLines.ToArray();
         }
 
+        public string[] AmbiancesToStringArray(Lines l)
+        {
+            List<string> samAmbiances = new List<string>();
+
+            for (int i = 0; i < l.lines.Length; i++)
+            { samAmbiances.Add(l.ambiances[i].name); }
+
+            return samAmbiances.ToArray();
+        }
+
+        public string[] IntroductionToStringArray(Lines l)
+        {
+            List<string> samIntroduction = new List<string>();
+
+            for (int i = 0; i < l.lines.Length; i++)
+            { samIntroduction.Add(l.introduction[i].name); }
+
+            return samIntroduction.ToArray();
+        }
+
         public List<Line>   GetLines()
         {
             List<Line> samLines = new List<Line>();
@@ -69,6 +89,26 @@ namespace Sam
             { samLines.Add(linesFromJSON.lines[i]); }
 
             return samLines;
+        }
+
+        public List<Line> GetAmbiances()
+        {
+            List<Line> samAmbiances = new List<Line>();
+
+            for (int i = 0; i < linesFromJSON.ambiances.Length; i++)
+            { samAmbiances.Add(linesFromJSON.ambiances[i]); }
+
+            return samAmbiances;
+        }
+
+        public List<Line> GetIntroduction()
+        {
+            List<Line> samIntroduction = new List<Line>();
+
+            for (int i = 0; i < linesFromJSON.introduction.Length; i++)
+            { samIntroduction.Add(linesFromJSON.introduction[i]); }
+
+            return samIntroduction;
         }
     }
 }

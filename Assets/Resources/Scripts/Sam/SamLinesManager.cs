@@ -16,10 +16,13 @@ namespace Sam
         private SamLinesJson    samLinesJson;
         private Lines           lines;
         private List<Line>      samLinesObject;
+        private List<Line>      samAmbiancesObject;
+        private List<Line>      samIntroductionObject;
 
-
+        private float           currentSongDuration = 0;
         private AudioSource     audioSource;
         private SoundManager    soundManager;
+        private List<Line>      pipe;
 
 
         // Mood Sam Line
@@ -36,11 +39,40 @@ namespace Sam
 
             samLinesJson = new SamLinesJson(this.language);
             lines = samLinesJson.LoadJSONLines();
-            Debug.Log(lines.presentation);
+            Debug.Log(lines.introduction);
             samLinesObject = samLinesJson.GetLines();
-           
-            soundManager = new SoundManager(audioSource, "Sam/SamLines/" + this.language + "/");
+            samAmbiancesObject = samLinesJson.GetAmbiances();
+            samIntroductionObject = samLinesJson.GetIntroduction();
 
+            soundManager = new SoundManager(audioSource, "Sam/SamLines/" + this.language + "/");
+            pipe = new List<Line>();
+        }
+
+        public void AddToPipe(Line line)
+        {
+            if (line != null)
+            {
+                this.pipe.Add(line);
+            }
+        }
+
+        public void PlayPipe()
+        {
+            if (pipe.Count != 0)
+            {
+                Play(pipe[0]);
+                pipe.RemoveAt(0);
+            }
+        }
+
+        public void CleanPipe()
+        {
+            pipe.Clear();
+        }
+
+        public void PausePipe(float time)
+        {
+            this.pipe.Add(new Line { name = "blank", duration = time, mood = "" });
         }
 
         public Lines GetSamLines()
@@ -48,9 +80,11 @@ namespace Sam
             return this.lines;
         }
 
-        public Line GetSamPrez()
+        public bool SongIsRunning()
         {
-            return this.lines.presentation;
+            if (Time.time > currentSongDuration)
+                return false;
+            return true;
         }
 
         public void SetLinesByMood(List<Line> samLines)
@@ -59,23 +93,23 @@ namespace Sam
 
             for (int i = 0; i < samLines.Count; i++)
             {
-                if (samLines[i].mood == "happy") // Attention il y en a une sur toi ahahah!
+                if (samLines[i].mood == "happy")
                 {
                     this.happyLines.Add(samLines[i]);
                 }
-                else if (samLines[i].mood == "exitement") //Tu te sent bien là hu huhu...
+                else if (samLines[i].mood == "exitement")
                 {
                     this.exitementLines.Add(samLines[i]);
                 }
-                else if (samLines[i].mood == "cynical") // Elles vont pas te manger tu sais... Enfin ..
+                else if (samLines[i].mood == "cynical")
                 {
                     this.cynicalLines.Add(samLines[i]);
                 }
-                else if (samLines[i].mood == "frustrated") // C'est sur que si tu restes dans ton coin aussi !
+                else if (samLines[i].mood == "frustrated")
                 {
                     this.frustratedLines.Add(samLines[i]);
                 }
-                else if (samLines[i].mood == "anger") // Tu fais le malin ! mais change de salle pour voir !
+                else if (samLines[i].mood == "anger")
                 {
                     this.angerLines.Add(samLines[i]);
                 }
@@ -110,19 +144,19 @@ namespace Sam
 
         public List<Line> GetLinesByMood(string mood)
         {
-            if (mood == "happy") // Attention il y en a une sur toi ahahah!
+            if (mood == "happy")
             {
                 return this.happyLines;
-            } else if (mood == "exitement") // Tu te sent bien là hu huhu...
+            } else if (mood == "exitement")
             {
                 return this.exitementLines;
-            } else if (mood == "cynical") // Elles vont pas te manger tu sais... Enfin ..
+            } else if (mood == "cynical")
             {
                 return this.cynicalLines;
-            } else if (mood == "frustrated") // C'est sur que si tu restes dans ton coin aussi !
+            } else if (mood == "frustrated")
             {
                 return this.frustratedLines;
-            } else if (mood == "anger") // Tu fais le malin ! mais change de salle pour voir !
+            } else if (mood == "anger")
             {
                 return this.angerLines;
             }
@@ -132,6 +166,40 @@ namespace Sam
         public List<Line> GetSamLinesObject()
         {
             return this.samLinesObject;
+        }
+
+        public List<Line> GetSamIntroductionObject()
+        {
+            return this.samIntroductionObject;
+        }
+
+        public List<Line> GetSamAmbiancesObject()
+        {
+            return this.samAmbiancesObject;
+        }
+
+        public Line GetSamLineObjectByName(string name)
+        {
+            foreach (Line line in this.samLinesObject)
+            {
+                if (line.name == name)
+                {
+                    return line;
+                }
+            }
+            return null;
+        }
+
+        public Line GetSamIntroductionObjectByName(string name)
+        {
+            foreach (Line line in this.samIntroductionObject)
+            {
+                if (line.name == name)
+                {
+                    return line;
+                }
+            }
+            return null;
         }
 
         /*public Line FindSamLineObjectByName(string name)
@@ -146,10 +214,14 @@ namespace Sam
         }
         */
         // Use the sound manager for load and play the sound asked in parameter.
-        public void Play(string songToPlay)
+        public void Play(Line songToPlay)
         {
-            soundManager.LoadSound(songToPlay);
-            soundManager.PlaySound();
+            currentSongDuration = Time.time + songToPlay.duration;
+            if (songToPlay.name != "blank")
+            {
+                soundManager.LoadSound(songToPlay.name);
+                soundManager.PlaySound();
+            }
         }
     }
 

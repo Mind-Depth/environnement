@@ -3,38 +3,42 @@
   "lines": [
     {
       "name": "attention_il_y_en_a_une_sur_toi_ahahah",
-      "duration": 17.0,
+      "duration": 4.0,
       "mood": "happy"
     },
     {
       "name": "tu_te_sent_bien_la_ahahah",
-      "duration": 3.0,
+      "duration": 4.0,
       "mood": "exitement"
     },
     {
       "name": "je_me_suis_jamais_fait_mordre_par_une_araignee_et_toi",
-      "duration": 4.0,
+      "duration": 5.0,
       "mood": "cynical"
     },
     {
       "name": "c_est_sur_que_si_tu_restes_dans_ton_coin_aussi",
-      "duration": 3.0,
+      "duration": 4.0,
       "mood": "frustrated"
     },
     {
       "name": "tu_fais_le_malin_mais_change_de_salle_pour_voir",
-      "duration": 2.0,
+      "duration": 3.0,
       "mood": "anger"
-    },
-    {
-      "name": "Fail",
-      "duration": 0.20000000298023225,
-      "mood": ""
     }
   ],
-  "presentation": {
-    "name": "presentation_sam",
-    "duration": 3.0,
-    "mood": "exitement"
-  }
+  "ambiances": [
+    {
+      "name": "attention_il_y_en_a_une_sur_toi_ahahah",
+      "duration": 4.0,
+      "mood": "happy"
+    }
+  ],
+  "introduction": [
+    {
+      "name": "presentation_sam",
+      "duration": 7.0,
+      "mood": "exitement"
+    }
+  ]
 }

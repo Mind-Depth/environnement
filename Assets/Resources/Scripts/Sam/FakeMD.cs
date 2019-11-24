@@ -42,6 +42,10 @@ namespace Sam
         public float interval = 1;
         private float nextTime = 0;
         private Player player = new Player();
+        public enum GAME_STATES : int { FIRST_ROOM, SECOND_ROOM, NORMAL_GAME, NO_ROOM };
+        public GAME_STATES currentRoom = GAME_STATES.NO_ROOM;
+        public GAME_STATES oldRoom = GAME_STATES.NO_ROOM;
+
 
         int RandomNumber(int max)
         { return UnityEngine.Random.Range(0, max); }
@@ -73,7 +77,26 @@ namespace Sam
             if (Time.time >= nextTime)
             {
                 interval = 10;
+                if (oldRoom != currentRoom)
+                {
+                    if (currentRoom == GAME_STATES.FIRST_ROOM)
+                    {
+                        TriggerManager._instance.UpdateRoom("first_room");
+                        oldRoom = currentRoom;
+                    }
+                    else if (currentRoom == GAME_STATES.SECOND_ROOM)
+                    {
+                        TriggerManager._instance.UpdateRoom("second_room");
+                        oldRoom = currentRoom;
+                    }
+                    else if (currentRoom == GAME_STATES.NORMAL_GAME)
+                    {
+                        UpdateRandomRoomConfig();
+                        oldRoom = currentRoom;
+                    }
+                }
                 player.ComputeFearLevel();
+
                 int fearLevel = player.GetCurrentFearLevel();
                 TriggerManager._instance.UpdateFear((float)fearLevel);
                 nextTime += interval;

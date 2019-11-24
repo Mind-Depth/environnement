@@ -18,6 +18,7 @@ namespace Sam
     {
         public string   lang;
         public Line[]   lines;
-        public Line presentation;
+        public Line[]   ambiances;
+        public Line[]   introduction;
     }
 }

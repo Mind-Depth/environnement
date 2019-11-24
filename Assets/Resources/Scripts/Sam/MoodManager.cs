@@ -7,20 +7,13 @@ using System.Linq;
 
 namespace Sam
 {
-    public static class Mood
-    {
-        public const float HAPPYNESS  = 80;
-        public const float EXITEMENT  = 60;
-        public const float CYNICAL    = 40;
-        public const float FRUSTRATED = 20;
-        public const float ANGER      = 0;
-    }
-
     public class MoodManager : MonoBehaviour
     {
-        private float   mood = 100.0f;
-        public int  computingThreshold = 2;
-        float   sinceLastSetMood = 0;
+        public int computingThreshold = 2;
+
+        float mood = 100.0f;
+        float sinceLastSetMood = 0;
+        int countUserFeelingChangement = 0;
 
         public MoodManager(float mood)
         {
@@ -46,6 +39,22 @@ namespace Sam
                 return "anger";
             }
             return "cynical";
+        }
+
+        public void IncrementUserFeelingChangement()
+        {
+            this.countUserFeelingChangement += 1;
+        }
+
+        public float GetUserFeelingVariation(float timeSpentInGame)
+        {
+            float userFeelingVariation = 0;
+
+            if (timeSpentInGame != 0)
+            {
+                userFeelingVariation = (this.countUserFeelingChangement / timeSpentInGame) * 100;
+            }
+            return userFeelingVariation;
         }
 
         public float GetMoodValue()
