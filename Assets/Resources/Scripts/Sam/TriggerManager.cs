@@ -140,7 +140,7 @@ namespace Sam
         private void Update()
         {
             // TODO: Correctly call all SamLinesManager functions.
-            // TODO: Modify mood with mood Manager and pass new moods in SamLinesManager class.
+            // TODO: Modify mood with mood Manager and pass new moods in SamLinesManager class. 
             if (states.GetGameState() == GameStates.INTRODUCTION)
             {
                 Debug.Log("INTRODUCTION IS PLAYING.");
