@@ -13,7 +13,7 @@ namespace Sam
     {
         private string  language;
         private string  linesPath;
-        private Lines   linesFromJSON;
+        private SamLines   linesFromJSON;
         private string  resourcePath = Application.dataPath + "/Resources/";
 
         public SamLinesJson(string language)
@@ -22,12 +22,12 @@ namespace Sam
             this.linesPath = GenerateLinesPath();
         }
 
-        public Lines LoadJSONLines()
+        public SamLines LoadJSONLines()
         {
             using (StreamReader stream = new StreamReader(linesPath))
             {
                 string json = stream.ReadToEnd();
-                linesFromJSON = JsonUtility.FromJson<Lines>(json);
+                linesFromJSON = JsonUtility.FromJson<SamLines>(json);
             }
             return linesFromJSON;
         }
@@ -51,11 +51,78 @@ namespace Sam
             this.linesPath = GenerateLinesPath();
         }
 
-        public string[] LinesToStringArray(Lines l)
+        public MindStateLines GetMindStateLines()
+        { return linesFromJSON.mindStateLines; }
+
+        public List<Line> GetAmbiances()
+        { return linesFromJSON.ambiances;}
+
+        public List<Line> GetIntroduction()
+        { return linesFromJSON.introduction; }
+
+        public List<Line> GetHelper()
+        { return GetMindStateLines().helper; }
+
+        public List<Line> GetPlotTwist()
+        { return GetMindStateLines().plot_twist; }
+
+        public List<Line> GetPsychopathe()
+        { return GetMindStateLines().psychopathe; }
+
+        // Mood
+
+        public List<Line> FindAmbiancesByMood(string mood)
+        { return GetAmbiances().FindAll((ambiance) => ambiance.mood.Contains(mood)); }
+
+        public List<Line> FindHelperByMood(string mood)
+        { return GetHelper().FindAll((helperLine) => helperLine.mood.Contains(mood)); }
+
+        public List<Line> FindPlotTwistByMood(string mood)
+        { return GetPlotTwist().FindAll((plotTwist) => plotTwist.mood.Contains(mood)); }
+
+        public List<Line> FindPsychopatheByMood(string mood)
+        { return GetPsychopathe().FindAll((psychopathe) => psychopathe.mood.Contains(mood)); }
+
+        // Fear
+
+        public List<Line> FindHelperByFear(string fear)
+        { return GetHelper().FindAll((helperLine) => helperLine.fear.Contains(fear)); }
+
+        public List<Line> FindPlotTwistByFear(string fear)
+        { return GetPlotTwist().FindAll((plotTwist) => plotTwist.fear.Contains(fear)); }
+
+        public List<Line> FindPsychopatheByFear(string fear)
+        { return GetPsychopathe().FindAll((psychopathe) => psychopathe.fear.Contains(fear)); }
+
+        // call to action
+
+        public List<Line> FindHelperByCTA(string cta)
+        { return GetHelper().FindAll((helperLine) => helperLine.callToAction.Contains(cta)); }
+
+        public List<Line> FindPlotTwistByCTA(string cta)
+        { return GetPlotTwist().FindAll((plotTwist) => plotTwist.callToAction.Contains(cta)); }
+
+        public List<Line> FindPsychopatheByCTA(string cta)
+        { return GetPsychopathe().FindAll((psychopathe) => psychopathe.callToAction.Contains(cta)); }
+
+        // call to action && Fear && Mood
+
+        public List<Line> FindHelper(string cta, string fear, string mood)
+        { return GetHelper().FindAll((helperLine) => helperLine.callToAction == cta && helperLine.fear == fear && helperLine.mood == mood); }
+
+        public List<Line> FindPlotTwist(string cta, string fear, string mood)
+        { return GetPlotTwist().FindAll((plotTwist) => plotTwist.callToAction == cta && plotTwist.fear == fear && plotTwist.mood == mood); }
+
+        public List<Line> FindPsychopathe(string cta, string fear, string mood)
+        { return GetPsychopathe().FindAll((psychopathe) => psychopathe.callToAction == cta && psychopathe.fear == fear && psychopathe.mood == mood); }
+
+
+
+        /*public string[] LinesToStringArray(Lines l)
         {
             List<string> samLines = new List<string>();
 
-            for (int i = 0; i < l.lines.Length; i++)
+            for (int i = 0; i < l.lines.Count; i++)
             { samLines.Add(l.lines[i].name); }
 
             return samLines.ToArray();
@@ -65,7 +132,7 @@ namespace Sam
         {
             List<string> samAmbiances = new List<string>();
 
-            for (int i = 0; i < l.lines.Length; i++)
+            for (int i = 0; i < l.lines.Count; i++)
             { samAmbiances.Add(l.ambiances[i].name); }
 
             return samAmbiances.ToArray();
@@ -75,7 +142,7 @@ namespace Sam
         {
             List<string> samIntroduction = new List<string>();
 
-            for (int i = 0; i < l.lines.Length; i++)
+            for (int i = 0; i < l.lines.Count; i++)
             { samIntroduction.Add(l.introduction[i].name); }
 
             return samIntroduction.ToArray();
@@ -83,32 +150,17 @@ namespace Sam
 
         public List<Line>   GetLines()
         {
-            List<Line> samLines = new List<Line>();
-
-            for (int i = 0; i < linesFromJSON.lines.Length; i++)
-            { samLines.Add(linesFromJSON.lines[i]); }
-
-            return samLines;
+            return linesFromJSON.lines;
         }
 
         public List<Line> GetAmbiances()
         {
-            List<Line> samAmbiances = new List<Line>();
-
-            for (int i = 0; i < linesFromJSON.ambiances.Length; i++)
-            { samAmbiances.Add(linesFromJSON.ambiances[i]); }
-
-            return samAmbiances;
+            return linesFromJSON.ambiances;
         }
 
         public List<Line> GetIntroduction()
         {
-            List<Line> samIntroduction = new List<Line>();
-
-            for (int i = 0; i < linesFromJSON.introduction.Length; i++)
-            { samIntroduction.Add(linesFromJSON.introduction[i]); }
-
-            return samIntroduction;
-        }
+            return linesFromJSON.introduction;
+        }*/
     }
 }

@@ -1,44 +1,127 @@
 {
   "lang": "fr",
-  "lines": [
-    {
-      "name": "attention_il_y_en_a_une_sur_toi_ahahah",
-      "duration": 4.0,
-      "mood": "happy"
-    },
-    {
-      "name": "tu_te_sent_bien_la_ahahah",
-      "duration": 4.0,
-      "mood": "exitement"
-    },
-    {
-      "name": "je_me_suis_jamais_fait_mordre_par_une_araignee_et_toi",
-      "duration": 5.0,
-      "mood": "cynical"
-    },
-    {
-      "name": "c_est_sur_que_si_tu_restes_dans_ton_coin_aussi",
-      "duration": 4.0,
-      "mood": "frustrated"
-    },
-    {
-      "name": "tu_fais_le_malin_mais_change_de_salle_pour_voir",
-      "duration": 3.0,
-      "mood": "anger"
-    }
-  ],
+  "mindStateLines": {
+    "helper": [
+      {
+        "name": "dans_cette_salle_il_faut_que_tu_actionnes_le_levier",
+        "duration": 4.0,
+        "mood": "normal",
+        "fear": "nyctophobia",
+        "callToAction": "levier"
+      },
+      {
+        "name": "depeche_toi_si_tu_veux_survivre_il_faut_que_tu_actionnes_le_levier",
+        "duration": 4.0,
+        "mood": "stressed",
+        "fear": "nyctophobia",
+        "callToAction": "levier"
+      },
+      {
+        "name": "actionnes_se_putain_de_levier",
+        "duration": 4.0,
+        "mood": "anger",
+        "fear": "nyctophobia",
+        "callToAction": "levier"
+      }
+    ],
+    "plot_twist": [
+      {
+        "name": "fais_ce_que_je_te_dis_sale_merde",
+        "duration": 4.0,
+        "mood": "anger",
+        "fear": "nyctophobia",
+        "callToAction": "levier"
+      }
+    ],
+    "psychopathe": [
+      {
+        "name": "attention_il_y_en_a_une_sur_toi_ahahah",
+        "duration": 4.0,
+        "mood": "happy",
+        "fear": "arachnophobia",
+        "callToAction": ""
+      },
+      {
+        "name": "je_suis_joyeux",
+        "duration": 4.0,
+        "mood": "happy",
+        "fear": "vertigo",
+        "callToAction": ""
+      },
+      {
+        "name": "tu_te_sent_bien_la_ahahah",
+        "duration": 4.0,
+        "mood": "exitement",
+        "fear": "nyctophobia",
+        "callToAction": ""
+      },
+      {
+        "name": "je_me_suis_jamais_fait_mordre_par_une_araignee_et_toi",
+        "duration": 5.0,
+        "mood": "cynical",
+        "fear": "claustrophobia",
+        "callToAction": ""
+      },
+      {
+        "name": "c_est_sur_que_si_tu_restes_dans_ton_coin_aussi",
+        "duration": 4.0,
+        "mood": "frustrated",
+        "fear": "claustrophobia",
+        "callToAction": ""
+      },
+      {
+        "name": "tu_fais_le_malin_mais_change_de_salle_pour_voir",
+        "duration": 3.0,
+        "mood": "anger",
+        "fear": "vertigo",
+        "callToAction": ""
+      }
+    ]
+  },
   "ambiances": [
     {
       "name": "attention_il_y_en_a_une_sur_toi_ahahah",
       "duration": 4.0,
-      "mood": "happy"
+      "mood": "happy",
+      "fear": "arachnophobia",
+      "callToAction": ""
+    },
+    {
+      "name": "tu_te_sent_bien_la_ahahah",
+      "duration": 4.0,
+      "mood": "exitement",
+      "fear": "arachnophobia",
+      "callToAction": ""
+    },
+    {
+      "name": "je_me_suis_jamais_fait_mordre_par_une_araignee_et_toi",
+      "duration": 5.0,
+      "mood": "cynical",
+      "fear": "arachnophobia",
+      "callToAction": ""
+    },
+    {
+      "name": "c_est_sur_que_si_tu_restes_dans_ton_coin_aussi",
+      "duration": 4.0,
+      "mood": "frustrated",
+      "fear": "arachnophobia",
+      "callToAction": ""
+    },
+    {
+      "name": "tu_fais_le_malin_mais_change_de_salle_pour_voir",
+      "duration": 3.0,
+      "mood": "anger",
+      "fear": "arachnophobia",
+      "callToAction": ""
     }
   ],
   "introduction": [
     {
       "name": "presentation_sam",
       "duration": 7.0,
-      "mood": "exitement"
+      "mood": "exitement",
+      "fear": "arachnophobia",
+      "callToAction": ""
     }
   ]
 }

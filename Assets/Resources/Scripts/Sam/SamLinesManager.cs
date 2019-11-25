@@ -9,12 +9,13 @@ namespace Sam
 {
     public class SamLinesManager
     {
-        private string[]        samLines;
+        private string[]        samLines2;
         private string          language;
         
 
         private SamLinesJson    samLinesJson;
-        private Lines           lines;
+        //private Lines           lines;
+        private SamLines        samLines;
         private List<Line>      samLinesObject;
         private List<Line>      samAmbiancesObject;
         private List<Line>      samIntroductionObject;
@@ -24,6 +25,12 @@ namespace Sam
         private SoundManager    soundManager;
         private List<Line>      pipe;
 
+        // TODO: Set and use current Sam's state moods.
+        // TODO: Set and use current call to action.
+        // TODO: Set and use current fear.
+        //
+        // TODO: Set and use Game State.
+        // TODO: Set and use Mind States.
 
         // Mood Sam Line
         private List<Line> happyLines = new List<Line>();
@@ -31,21 +38,24 @@ namespace Sam
         private List<Line> cynicalLines = new List<Line>();
         private List<Line> frustratedLines = new List<Line>();
         private List<Line> angerLines = new List<Line>();
-
+        
         public SamLinesManager(AudioSource audioSource, string language)
         {
             this.audioSource = audioSource;
             this.language = language;
 
             samLinesJson = new SamLinesJson(this.language);
-            lines = samLinesJson.LoadJSONLines();
-            Debug.Log(lines.introduction);
-            samLinesObject = samLinesJson.GetLines();
+            samLines = samLinesJson.LoadJSONLines();
+            // TODO: Each paramaters here will be changed by class global variables.
+            // TODO: if (intro) 3 states availables (normal | stressed | anger); get them in introduction list. Select line for each roooms (firstroom | second room).
+            // TODO: if (play mode) 5 states availables (HELPER(normal | stressed | anger) | PLOT_TWIST | PSYCHOPATHE); get them in lines list. Select line for each roooms (Arachnophobia | Vertigo | Nyctophobia | Claustrophobia) for each CTA (levier | armoire) for each mood (happyness | exitement | cynical | frustrated | anger) but (normal | stressed | anger) for helper.
+            Debug.Log(samLinesJson.FindHelper("levier", "nyctophobia", "stressed")[0].name);
+            /*samLinesObject = samLinesJson.GetLines();
             samAmbiancesObject = samLinesJson.GetAmbiances();
             samIntroductionObject = samLinesJson.GetIntroduction();
 
             soundManager = new SoundManager(audioSource, "Sam/SamLines/" + this.language + "/");
-            pipe = new List<Line>();
+            pipe = new List<Line>();*/
         }
 
         public void AddToPipe(Line line)
@@ -75,10 +85,10 @@ namespace Sam
             this.pipe.Add(new Line { name = "blank", duration = time, mood = "" });
         }
 
-        public Lines GetSamLines()
+        /*public Lines GetSamLines()
         {
             return this.lines;
-        }
+        }*/
 
         public bool SongIsRunning()
         {
@@ -87,31 +97,31 @@ namespace Sam
             return true;
         }
 
-        public void SetLinesByMood(List<Line> samLines)
+        public void SetLinesByMood(List<Line> allSamLines)
         {
-            Debug.Log("SetLinesByMood > " + samLines[0].name);
+            Debug.Log("SetLinesByMood > " + allSamLines[0].name);
 
-            for (int i = 0; i < samLines.Count; i++)
+            for (int i = 0; i < allSamLines.Count; i++)
             {
-                if (samLines[i].mood == "happy")
+                if (allSamLines[i].mood == "happy")
                 {
-                    this.happyLines.Add(samLines[i]);
+                    this.happyLines.Add(allSamLines[i]);
                 }
-                else if (samLines[i].mood == "exitement")
+                else if (allSamLines[i].mood == "exitement")
                 {
-                    this.exitementLines.Add(samLines[i]);
+                    this.exitementLines.Add(allSamLines[i]);
                 }
-                else if (samLines[i].mood == "cynical")
+                else if (allSamLines[i].mood == "cynical")
                 {
-                    this.cynicalLines.Add(samLines[i]);
+                    this.cynicalLines.Add(allSamLines[i]);
                 }
-                else if (samLines[i].mood == "frustrated")
+                else if (allSamLines[i].mood == "frustrated")
                 {
-                    this.frustratedLines.Add(samLines[i]);
+                    this.frustratedLines.Add(allSamLines[i]);
                 }
-                else if (samLines[i].mood == "anger")
+                else if (allSamLines[i].mood == "anger")
                 {
-                    this.angerLines.Add(samLines[i]);
+                    this.angerLines.Add(allSamLines[i]);
                 }
             }
         }
@@ -133,14 +143,14 @@ namespace Sam
             this.audioSource = audioSource;
             soundManager.SetAudioSource(this.audioSource);
         }
-
+        /*
         public string[] GetSamLinesName()
         {
-            /*Debug.Log("samelinesJSON Object = " + samLinesJson);*/
-            samLines = samLinesJson.LinesToStringArray(lines);
+            Debug.Log("samelinesJSON Object = " + samLinesJson);
+            samLines2 = samLinesJson.LinesToStringArray(lines);
             
-            return samLines;
-        }
+            return samLines2;
+        }*/
 
         public List<Line> GetLinesByMood(string mood)
         {

@@ -69,11 +69,11 @@ namespace Sam
             mood.Add("septic");*/
 
             samLineManager = new SamLinesManager(audioSource, lang);
-            samLines = samLineManager.GetSamLinesName();
-            samLinesObject = samLineManager.GetSamLinesObject();
-            samIntroductionLines = samLineManager.GetSamIntroductionObject();
+            //samLines = samLineManager.GetSamLinesName();
+            //samLinesObject = samLineManager.GetSamLinesObject();
+            //samIntroductionLines = samLineManager.GetSamIntroductionObject();
 
-            samLineManager.SetLinesByMood(samLinesObject);
+            //samLineManager.SetLinesByMood(samLinesObject);
 
             /*historyManager = new HistoryManager();*/
 
@@ -117,24 +117,30 @@ namespace Sam
 
         private void ConfigureSoundFirstRoom()
         {
+            /*
             samLineManager.AddToPipe(samIntroductionLines[0]);
             Debug.Log("petit pause.");
             samLineManager.PausePipe(5.0f);
             samLineManager.AddToPipe(samLineManager.GetSamLineObjectByName("tu_te_sent_bien_la_ahahah"));
             samLineManager.AddToPipe(samLineManager.GetSamLineObjectByName("attention_il_y_en_a_une_sur_toi_ahahah"));
             samLineManager.AddToPipe(samLineManager.GetSamLineObjectByName("c_est_sur_que_si_tu_restes_dans_ton_coin_aussi"));
+            */
         }
 
         private void ConfigureSoundSecondRoom()
         {
+            /*
             samLineManager.AddToPipe(samLineManager.GetSamIntroductionObjectByName("presentation_sam"));
             samLineManager.AddToPipe(samLineManager.GetSamLineObjectByName("tu_fais_le_malin_mais_change_de_salle_pour_voir"));
             samLineManager.AddToPipe(samLineManager.GetSamLineObjectByName("attention_il_y_en_a_une_sur_toi_ahahah"));
             samLineManager.AddToPipe(samLineManager.GetSamLineObjectByName("tu_fais_le_malin_mais_change_de_salle_pour_voir"));
+            */    
         }
 
         private void Update()
         {
+            // TODO: Correctly call all SamLinesManager functions.
+            // TODO: Modify mood with mood Manager and pass new moods in SamLinesManager class.
             if (states.GetGameState() == GameStates.INTRODUCTION)
             {
                 Debug.Log("INTRODUCTION IS PLAYING.");
@@ -142,10 +148,10 @@ namespace Sam
             {
                 Debug.Log("Let's the party begin !");
             }
-            if (!samLineManager.SongIsRunning())
+            /*if (!samLineManager.SongIsRunning())
             {
                 samLineManager.PlayPipe();
-            }
+            }*/
         }
 
         public void UpdateFear(float newFearLevel)
@@ -165,7 +171,7 @@ namespace Sam
             currentRoom = new Room();
             currentRoom.SetRoomName(roomName);
             currentRoom.SetTimeSpent(Time.time);
-            samLineManager.CleanPipe();
+            //samLineManager.CleanPipe();
             states.SetGameState(GameStates.INTRODUCTION);
 
             if (currentRoom.GetRoomName() == "first_room")
@@ -184,7 +190,7 @@ namespace Sam
             string msg = "[SAM] received a room config of type " + fearType.ToString() + " and intensity " + fearIntensity.ToString();
             Debug.Log("DebugLog -- " + msg);
             states.SetGameState(GameStates.PLAY_MODE);
-            samLineManager.CleanPipe();
+            //samLineManager.CleanPipe();
             //Console._instance.AddLog("ConsoleInstance -- " + msg);
         }
 
