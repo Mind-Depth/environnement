@@ -47,8 +47,8 @@ namespace Sam
         // Load one of the pick up lines of sam
         public void LoadSound(string lineToPlay)
         {
-            if (!File.Exists(this.resourcePath + this.pathFolder + lineToPlay + ".mp3"))
-                Debug.LogError(":LoadSound: " + this.resourcePath + this.pathFolder + lineToPlay + ".mp3" + " : Do not exist");
+            if (!File.Exists(this.resourcePath + this.pathFolder + lineToPlay + ".wav"))
+                Debug.LogError(":LoadSound: " + this.resourcePath + this.pathFolder + lineToPlay + ".wav" + " : Do not exist");
             
             source.clip = Resources.Load<AudioClip>(this.pathFolder + lineToPlay);
         }

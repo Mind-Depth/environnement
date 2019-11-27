@@ -53,9 +53,10 @@ namespace Sam
             /*samLinesObject = samLinesJson.GetLines();
             samAmbiancesObject = samLinesJson.GetAmbiances();
             samIntroductionObject = samLinesJson.GetIntroduction();
-
+            */
             soundManager = new SoundManager(audioSource, "Sam/SamLines/" + this.language + "/");
-            pipe = new List<Line>();*/
+            pipe = new List<Line>();
+
         }
 
         public void AddToPipe(Line line)
@@ -65,6 +66,12 @@ namespace Sam
                 this.pipe.Add(line);
             }
         }
+
+        public Line FindIntroductionByName(string name)
+        { return samLinesJson.FindIntroductionByName(name); }
+
+        public Line FindIntroductionByCTA(string cta)
+        { return samLinesJson.FindIntroductionByCTA(cta); }
 
         public void PlayPipe()
         {

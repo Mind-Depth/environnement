@@ -45,6 +45,10 @@ namespace Sam
         public enum GAME_STATES : int { FIRST_ROOM, SECOND_ROOM, NORMAL_GAME, NO_ROOM };
         public GAME_STATES currentRoom = GAME_STATES.NO_ROOM;
         public GAME_STATES oldRoom = GAME_STATES.NO_ROOM;
+        public enum TRIGGERED_EVENT : int { NO_EVENT, LEVER };
+        public TRIGGERED_EVENT triggeredEvent = TRIGGERED_EVENT.NO_EVENT;
+        public TRIGGERED_EVENT oldTriggeredEvent = TRIGGERED_EVENT.NO_EVENT;
+
 
 
         int RandomNumber(int max)
@@ -94,6 +98,11 @@ namespace Sam
                         UpdateRandomRoomConfig();
                         oldRoom = currentRoom;
                     }
+                }
+                if (oldTriggeredEvent != triggeredEvent)
+                {
+                    TriggerManager._instance.UpdateTriggerEvents(new SamTags { name = "lever", isTriggable = true });
+                    oldTriggeredEvent = triggeredEvent;
                 }
                 player.ComputeFearLevel();
 

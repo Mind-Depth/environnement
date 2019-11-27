@@ -6,7 +6,8 @@ namespace Sam
     public class SamTags: MonoBehaviour
     {
         //TODO insert real data
-        public string data;
+        public string name;
+        public bool isTriggable = false;
 
         static public void FetchFromTransform(Transform room, List<SamTags> tags)
         {

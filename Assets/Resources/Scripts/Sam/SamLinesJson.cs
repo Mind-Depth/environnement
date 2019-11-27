@@ -116,6 +116,17 @@ namespace Sam
         public List<Line> FindPsychopathe(string cta, string fear, string mood)
         { return GetPsychopathe().FindAll((psychopathe) => psychopathe.callToAction == cta && psychopathe.fear == fear && psychopathe.mood == mood); }
 
+        // name
+
+        public Line FindIntroductionByName(string name)
+        {
+            return GetIntroduction().Find((intro) => intro.name == name);
+        }
+
+        // intro cta
+
+        public Line FindIntroductionByCTA(string cta)
+        { return GetIntroduction().Find((intro) => intro.callToAction.Contains(cta)); }
 
 
         /*public string[] LinesToStringArray(Lines l)

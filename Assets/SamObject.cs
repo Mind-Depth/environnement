@@ -9,7 +9,7 @@ public class SamObject : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        TriggerManager._instance.UpdateTriggerEvents(this);
+       //TriggerManager._instance.UpdateTriggerEvents(this);
     }
 
     // Update is called once per frame

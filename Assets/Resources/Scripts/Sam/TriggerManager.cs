@@ -117,51 +117,66 @@ namespace Sam
 
         private void ConfigureSoundFirstRoom()
         {
-            /*
-            samLineManager.AddToPipe(samIntroductionLines[0]);
-            Debug.Log("petit pause.");
-            samLineManager.PausePipe(5.0f);
-            samLineManager.AddToPipe(samLineManager.GetSamLineObjectByName("tu_te_sent_bien_la_ahahah"));
-            samLineManager.AddToPipe(samLineManager.GetSamLineObjectByName("attention_il_y_en_a_une_sur_toi_ahahah"));
-            samLineManager.AddToPipe(samLineManager.GetSamLineObjectByName("c_est_sur_que_si_tu_restes_dans_ton_coin_aussi"));
-            */
+            samLineManager.AddToPipe(samLineManager.FindIntroductionByName("intro_allumage_de_la_radio"));
+            samLineManager.PausePipe(3.0f);
+            samLineManager.AddToPipe(samLineManager.FindIntroductionByName("depeche_toi_sors_d_ici_il_arrive"));
+            samLineManager.PausePipe(3.0f);
+            samLineManager.AddToPipe(samLineManager.FindIntroductionByName("vas_au_fond_et_sors_de_suite"));
+            samLineManager.PausePipe(1.5f);
+            samLineManager.AddToPipe(samLineManager.FindIntroductionByName("la_porte_au_fond_sors_de_la"));
+            samLineManager.PausePipe(1.0f);
+            samLineManager.AddToPipe(samLineManager.FindIntroductionByName("sors_de_la_putain"));
         }
 
         private void ConfigureSoundSecondRoom()
         {
-            /*
-            samLineManager.AddToPipe(samLineManager.GetSamIntroductionObjectByName("presentation_sam"));
-            samLineManager.AddToPipe(samLineManager.GetSamLineObjectByName("tu_fais_le_malin_mais_change_de_salle_pour_voir"));
-            samLineManager.AddToPipe(samLineManager.GetSamLineObjectByName("attention_il_y_en_a_une_sur_toi_ahahah"));
-            samLineManager.AddToPipe(samLineManager.GetSamLineObjectByName("tu_fais_le_malin_mais_change_de_salle_pour_voir"));
-            */    
+            samLineManager.AddToPipe(samLineManager.FindIntroductionByName("okay_ca_c_est_regle"));
+            samLineManager.PausePipe(2.0f);
+            samLineManager.AddToPipe(samLineManager.FindIntroductionByName("je_m_appelle_sam_1"));
+            samLineManager.AddToPipe(samLineManager.FindIntroductionByName("premiere_chose_a_faire_rallumer_la_lumiere"));
+        }
+
+        private void ConfigureSoundSecondRoomAfterCta()
+        {
+            samLineManager.AddToPipe(samLineManager.FindIntroductionByCTA("lever"));
+            samLineManager.PausePipe(1.0f);
+            samLineManager.AddToPipe(samLineManager.FindIntroductionByName("premiere_chose_a_faire_passer_dans_une_nouvelle_salle"));
+            samLineManager.AddToPipe(samLineManager.FindIntroductionByName("avance_quoi_qu_il_arrive"));
+            samLineManager.AddToPipe(samLineManager.FindIntroductionByName("quoi_que_tu_puisses_voir"));
+
         }
 
         private void Update()
         {
             // TODO: Correctly call all SamLinesManager functions.
             // TODO: Modify mood with mood Manager and pass new moods in SamLinesManager class. 
-            if (states.GetGameState() == GameStates.INTRODUCTION)
-            {
-                Debug.Log("INTRODUCTION IS PLAYING.");
-            } else if (states.GetGameState() == GameStates.PLAY_MODE)
-            {
-                Debug.Log("Let's the party begin !");
+            if (Time.time > nextTurn) {
+                if (states.GetGameState() == GameStates.INTRODUCTION)
+                {
+                    Debug.Log("INTRODUCTION IS PLAYING.");
+                } else if (states.GetGameState() == GameStates.PLAY_MODE)
+                {
+                    Debug.Log("Let's the party begin !");
+                }
+                nextTurn += 1;
             }
-            /*if (!samLineManager.SongIsRunning())
+            if (!samLineManager.SongIsRunning())
             {
                 samLineManager.PlayPipe();
-            }*/
+            }
         }
 
         public void UpdateFear(float newFearLevel)
         {
-            fearLevel = (int)newFearLevel;
-            Debug.Log("fearLevel :: " + fearLevel);
-            Debug.Log("SAM mood :: " + moodIntroduction.GetMoodValue());
-            moodIntroduction.IncrementUserFeelingChangement();
-            //Debug.Log("DebugLog/ [SAM] received a fear level of " + fearLevel.ToString());
-            //Console._instance.AddLog("ConsoleInstance/ [SAM] received a fear level of " + fearLevel.ToString());
+            if ((int)newFearLevel != fearLevel)
+            {
+                fearLevel = (int)newFearLevel;
+                Debug.Log("fearLevel :: " + fearLevel);
+                Debug.Log("SAM mood :: " + moodIntroduction.GetMoodValue());
+                moodIntroduction.IncrementUserFeelingChangement();
+                //Debug.Log("DebugLog/ [SAM] received a fear level of " + fearLevel.ToString());
+                //Console._instance.AddLog("ConsoleInstance/ [SAM] received a fear level of " + fearLevel.ToString());
+            }
         }
 
         public void UpdateRoom(String roomName)
@@ -176,10 +191,12 @@ namespace Sam
 
             if (currentRoom.GetRoomName() == "first_room")
             {
+                samLineManager.CleanPipe();
                 ConfigureSoundFirstRoom();
             }
             else if (currentRoom.GetRoomName() == "second_room")
             {
+                samLineManager.CleanPipe();
                 ConfigureSoundSecondRoom();
             }
             //Console._instance.AddLog("ConsoleInstance -- " + msg);
@@ -194,10 +211,16 @@ namespace Sam
             //Console._instance.AddLog("ConsoleInstance -- " + msg);
         }
 
-        public void UpdateTriggerEvents(SamObject eventTriggered)
+        public void UpdateTriggerEvents(SamTags eventTriggered)
         {
             string msg = "[SAM] received a event is trigger " + eventTriggered.name;
             Debug.Log("DebugLog -- " + msg);
+            if (currentRoom.GetRoomName() == "second_room")
+            {
+                samLineManager.CleanPipe();
+                ConfigureSoundSecondRoomAfterCta();
+            }
+            
             //Console._instance.AddLog("ConsoleInstance --" + msg);
         }
     }

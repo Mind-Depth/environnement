@@ -117,11 +117,95 @@
   ],
   "introduction": [
     {
-      "name": "presentation_sam",
-      "duration": 7.0,
-      "mood": "exitement",
-      "fear": "arachnophobia",
+      "name": "intro_allumage_de_la_radio",
+      "duration": 13.0,
+      "mood": "normal",
+      "fear": "",
       "callToAction": ""
+    },
+    {
+      "name": "depeche_toi_sors_d_ici_il_arrive",
+      "duration": 3.0,
+      "mood": "normal",
+      "fear": "",
+      "callToAction": ""
+    },
+    {
+      "name": "vas_au_fond_et_sors_de_suite",
+      "duration": 3.0,
+      "mood": "normal",
+      "fear": "",
+      "callToAction": ""
+    },
+    {
+      "name": "la_porte_au_fond_sors_de_la",
+      "duration": 2.0,
+      "mood": "stressed",
+      "fear": "",
+      "callToAction": ""
+    },
+    {
+      "name": "sors_de_la_putain",
+      "duration": 2.0,
+      "mood": "feared",
+      "fear": "",
+      "callToAction": ""
+    },
+    {
+      "name": "okay_ca_c_est_regle",
+      "duration": 3.0,
+      "mood": "feared",
+      "fear": "",
+      "callToAction": ""
+    },
+    {
+      "name": "je_m_appelle_sam_1",
+      "duration": 4.0,
+      "mood": "feared",
+      "fear": "",
+      "callToAction": ""
+    },
+    {
+      "name": "premiere_chose_a_faire_rallumer_la_lumiere",
+      "duration": 7.0,
+      "mood": "feared",
+      "fear": "",
+      "callToAction": ""
+    },
+    {
+      "name": "voila_la_on_y_voit_mieux",
+      "duration": 2.0,
+      "mood": "feared",
+      "fear": "",
+      "callToAction": "lever"
+    },
+    {
+      "name": "il_va_falloir_que_tu_m_ecoutes",
+      "duration": 5.0,
+      "mood": "feared",
+      "fear": "",
+      "callToAction": "lever"
+    },
+    {
+      "name": "premiere_chose_a_faire_passer_dans_une_nouvelle_salle",
+      "duration": 3.0,
+      "mood": "feared",
+      "fear": "",
+      "callToAction": "lever"
+    },
+    {
+      "name": "avance_quoi_qu_il_arrive",
+      "duration": 2.0,
+      "mood": "feared",
+      "fear": "",
+      "callToAction": "lever"
+    },
+    {
+      "name": "quoi_que_tu_puisses_voir",
+      "duration": 0.5,
+      "mood": "feared",
+      "fear": "",
+      "callToAction": "lever"
     }
   ]
 }
