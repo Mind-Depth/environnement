@@ -38,8 +38,6 @@ public class Teleporter : MonoBehaviour
     {
         if (!is_teleporting)
         {
-            old_player_position = player.position;
-            player.position = RoomManager._instance.pt_tp_player_waiting.position;
             is_teleporting = true;
             ppv.profile = pppSave;
             RoomManager._instance.RequestRoom();
@@ -50,10 +48,6 @@ public class Teleporter : MonoBehaviour
     public void TeleportPlayerBack(float new_position_y)
     {
         is_teleporting = false;
-        player.position = new Vector3(old_player_position.x, new_position_y + 1, old_player_position.z);
-        player.GetComponent<Rigidbody>().velocity = Vector3.zero;
-        player.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
-        player.GetComponent<Rigidbody>().Sleep();
     }
 
     public void ShowIndication()
