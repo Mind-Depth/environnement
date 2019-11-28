@@ -159,16 +159,19 @@ public class MeshTest : MonoBehaviour
 		new_mesh.SetVertices(vertices);
 		List<int> new_mesh_triangles = new List<int>();
 
+		// var surfaceNormal = Vector3.Cross(face[1] - face[0], face[2] - face[0]);
+		// Debug.Log(surfaceNormal);
+
 		// We add the 3 new triangles to the new mesh
 		new_mesh_triangles.AddRange(new int[]{obj.triangles[idx],
 						      obj.triangles[idx + 1],
 					     	      vertices.Count - 1,
-					     	      vertices.Count - 1,
 					     	      obj.triangles[idx + 1],
 					     	      obj.triangles[idx + 2],
-					     	      obj.triangles[idx],
 					     	      vertices.Count - 1,
-					     	      obj.triangles[idx + 2]});
+					     	      obj.triangles[idx],
+					     	      obj.triangles[idx + 2],
+					     	      vertices.Count - 1});
 
 		new_mesh.triangles = new_mesh_triangles.ToArray();
 		meshes.Add(new_mesh);
@@ -214,8 +217,11 @@ public class MeshTest : MonoBehaviour
 
     /// This one is for debug
     /// The impact point is random
-    private static List<Mesh> DestructionMesh(Mesh obj)
+    // private static List<Mesh> DestructionMesh(Mesh obj)
+    private static Mesh DestructionMesh(Mesh obj)
     {
-	 return DestructionTriangle(obj, UnityEngine.Random.Range(0, obj.triangles.Length));
+	 // return DestructionTriangle(obj, UnityEngine.Random.Range(0, obj.triangles.Length));
+	 List<Mesh> ret = DestructionTriangle(obj, UnityEngine.Random.Range(0, obj.triangles.Length));
+	 return ret[ret.Count - 1];
     }
 }
