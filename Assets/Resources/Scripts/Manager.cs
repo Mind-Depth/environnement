@@ -2,6 +2,7 @@
 using System;
 using UnityEngine.UI;
 using System.Collections;
+using Sam;
 /**
 * Classe principale instanciée au lancement du programme.  
 * Elle instancie les différents threads utilisés par l'Intelligence artificielle.
@@ -10,8 +11,10 @@ using System.Collections;
 public class Manager : MonoBehaviour
 {
     public static Manager _instance = null;
-    public static Configuration configuration = Configuration.Load();
     public Client generation_client;
+
+    public string configuration_root;
+    public static Configuration configuration;
 
     /* Queue for watchers data : Main -> Thread */
     public MutexedQueue<EnvironmentMessage> queue_watchers_data;
@@ -32,7 +35,6 @@ public class Manager : MonoBehaviour
         if (_instance == null)
         {
             _instance = this;
-            DontDestroyOnLoad(this);
         }
         else if (_instance != this)
         {
@@ -42,6 +44,7 @@ public class Manager : MonoBehaviour
 
     void Start()
     {
+        configuration = Configuration.Load(configuration_root);
         /* Création des communications. */
         Console._instance.AddLog( "Starting environment...");
         queue_watchers_data = new MutexedQueue<EnvironmentMessage>();
@@ -98,6 +101,9 @@ public class Manager : MonoBehaviour
                     case GenerationMessage.Type.RoomConfiguration:
                         if (is_started)
                             Orchestration._instance.GenerateNewMap(response);
+                        break;
+                    case GenerationMessage.Type.FearLevel:
+                        TriggerManager._instance.UpdateFear(response.fearIntensity);
                         break;
                     case GenerationMessage.Type.Quit:
                         Console._instance.AddLog("Endding game.");

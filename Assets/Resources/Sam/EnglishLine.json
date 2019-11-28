@@ -1,0 +1,40 @@
+{
+  "lang": "en",
+  "lines": [
+    {
+      "name": "GrabMeABeer",
+      "duration": 1.2999999523162842,
+      "mood": ""
+    },
+    {
+      "name": "TheWalls",
+      "duration": 4.300000190734863,
+      "mood": "happy"
+    },
+    {
+      "name": "TheWalls",
+      "duration": 4.300000190734863,
+      "mood": "exitement"
+    },
+    {
+      "name": "TheWalls",
+      "duration": 4.300000190734863,
+      "mood": "cynical"
+    },
+    {
+      "name": "TheWalls",
+      "duration": 4.300000190734863,
+      "mood": "frustrated"
+    },
+    {
+      "name": "TheWalls",
+      "duration": 4.300000190734863,
+      "mood": "anger"
+    },
+    {
+      "name": "Fail",
+      "duration": 0.20000000298023225,
+      "mood": ""
+    }
+  ]
+}

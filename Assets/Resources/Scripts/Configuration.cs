@@ -26,10 +26,10 @@ public class Configuration
     public _connection connection;
 
     /* Static Load */
-    public static string root = "..\\Generation\\config";
-    public static string main = root + "\\main.json";
-    public static Configuration Load()
+    public static string last_root;
+    public static Configuration Load(string root)
     {
-        return JsonUtility.FromJson<Configuration>(File.ReadAllText(main));
+        last_root = root;
+        return JsonUtility.FromJson<Configuration>(File.ReadAllText(root + "\\main.json"));
     }
 }

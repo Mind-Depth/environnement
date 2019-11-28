@@ -4,5 +4,17 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Resources/Scenes/Init.unity
+    guid: 263336f6f5787c34695a9f4462531927
+  - enabled: 1
+    path: Assets/Resources/Scenes/WaitingRoom.unity
+    guid: 690e95d850d344f43a76c896ba902b6c
+  - enabled: 1
+    path: Assets/Resources/Scenes/EmptyGame.unity
+    guid: 0d38c496f1f27dd46b08213a2d9bcc4a
+  - enabled: 0
+    path: Assets/Resources/Scenes/GameTest.unity
+    guid: 7f6040a7e3be1d841b7fde14785dcbe5
   m_configObjects: {}

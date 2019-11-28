@@ -20,7 +20,6 @@ public class Teleporter : MonoBehaviour
         if (_instance == null)
         {
             _instance = this;
-            DontDestroyOnLoad(this);
         }
         else if (_instance != this)
         {
@@ -44,6 +43,7 @@ public class Teleporter : MonoBehaviour
             is_teleporting = true;
             ppv.profile = pppSave;
             RoomManager._instance.RequestRoom();
+            indication.gameObject.SetActive(false);
         }
     }
 

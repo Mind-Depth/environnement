@@ -20,6 +20,7 @@ public class SpiderAI : RotableEntity
     State state;
     float stateDuration;
 
+    float hoverTime = 0f;
     bool isRotating = false;
     float rotationProgress = 0f;
     Quaternion originalRotation;
@@ -44,6 +45,8 @@ public class SpiderAI : RotableEntity
 
     public float upwardRotationSpeed = 1f;
     public float downwardRotationSpeed = 1f;
+
+    private float maxHoverTime = 3f;
 
     public Transform frontRaycastSource;
     public Transform backRaycastSource;
@@ -121,6 +124,16 @@ public class SpiderAI : RotableEntity
         return Physics.Raycast(rightRaycastSource.position, rightRaycastSource.forward, out hit, radius.x, layerMask);
     }
 
+    bool FrontDownwardRaycast(out RaycastHit hit, float dist=-1)
+    {
+        return Physics.Raycast(frontRaycastSource.position, -frontRaycastSource.up, out hit, dist < 0 ? groundHovering : dist, layerMask);
+    }
+
+    bool BackDownwardRaycast(out RaycastHit hit)
+    {
+        return Physics.Raycast(backRaycastSource.position, -backRaycastSource.up, out hit, groundHovering, layerMask);
+    }
+
     void UpdateRotation(float speed)
     {
         rotationProgress += Time.deltaTime * speed;
@@ -141,13 +154,13 @@ public class SpiderAI : RotableEntity
             return;
         }
 
-        RaycastHit front, back;
-        bool frontRaycast = Physics.Raycast(frontRaycastSource.position, -frontRaycastSource.up, out front, groundHovering, layerMask);
-        bool backRaycast = Physics.Raycast(backRaycastSource.position, -backRaycastSource.up, out back, groundHovering, layerMask);
+        bool frontRaycast = FrontDownwardRaycast(out RaycastHit front);
+        bool backRaycast = BackDownwardRaycast(out RaycastHit back);
 
         // Rectify rotation on light slopes
         if (frontRaycast)
         {
+            hoverTime = 0;
             if (!backRaycast || back.distance < front.distance)
                 RotateToNormal(front.normal);
             else if (front.distance < back.distance)
@@ -155,6 +168,21 @@ public class SpiderAI : RotableEntity
             return;
         }
 
+        // Prevent spider from floating in the air
+        hoverTime += Time.deltaTime;
+        if (hoverTime > maxHoverTime)
+        {
+            if (FrontDownwardRaycast(out hit, Mathf.Infinity))
+            {
+                transform.position = hit.point + frontRaycastSource.up * groundHovering;
+                transform.rotation = Quaternion.FromToRotation(transform.up, hit.normal) * transform.rotation;
+            }
+            else
+                Destroy(gameObject);
+            return;
+        }
+
+        // Rotate in order to pass an edge
         isRotating = false;
         transform.RotateAround(transform.position, transform.right, Time.deltaTime * downwardRotationSpeed);
     }
