@@ -14,8 +14,8 @@ namespace Valve.VR.InteractionSystem
 	[RequireComponent( typeof( Interactable ) )]
 	public class HapticRack : MonoBehaviour
 	{
-		[Tooltip( "The linear mapping driving the haptic rack" )]
-		public LinearMapping linearMapping;
+/*		[Tooltip( "The linear mapping driving the haptic rack" )]
+		public LinearMapping linearMapping; */
 
 		[Tooltip( "The number of haptic pulses evenly distributed along the mapping" )]
 		public int teethCount = 128;
@@ -35,10 +35,10 @@ namespace Valve.VR.InteractionSystem
 		//-------------------------------------------------
 		void Awake()
 		{
-			if ( linearMapping == null )
+/* 			if ( linearMapping == null )
 			{
 				linearMapping = GetComponent<LinearMapping>();
-			}
+			}*/
 		}
 
 
@@ -59,12 +59,12 @@ namespace Valve.VR.InteractionSystem
 		//-------------------------------------------------
 		void Update()
 		{
-			int currentToothIndex = Mathf.RoundToInt( linearMapping.value * teethCount - 0.5f );
+			/*int currentToothIndex = Mathf.RoundToInt( linearMapping.value * teethCount - 0.5f );
 			if ( currentToothIndex != previousToothIndex )
 			{
 				Pulse();
 				previousToothIndex = currentToothIndex;
-			}
+			}*/
 		}
 
 
