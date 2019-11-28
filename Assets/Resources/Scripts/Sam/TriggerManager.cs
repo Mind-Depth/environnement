@@ -209,6 +209,43 @@ namespace Sam
             }
         }
 
+        private void ConfigureSoundNyctophobiaRoom()
+        {
+            if (states.GetMindState() == MindStates.HELPER)
+            {
+                samLineManager.PausePipe(3.0f);
+                samLineManager.AddToPipe(samLineManager.FindHelperByName("dans_cette_salle_il_faut_rester_discret"));
+                samLineManager.PausePipe(1.0f);
+                samLineManager.AddToPipe(samLineManager.FindHelperByName("tu_devrais_trouver_un_interupteur"));
+                samLineManager.PausePipe(2.0f);
+                samLineManager.AddToPipe(samLineManager.FindHelperByName("il_va_falloir_eteindre_la_lumiere"));
+                samLineManager.PausePipe(3.0f);
+                samLineManager.AddToPipe(samLineManager.FindHelperByName("fais_moi_confiance"));
+                samLineManager.PausePipe(2.0f);
+                samLineManager.AddToPipe(samLineManager.FindHelperByName("il_faut_que_tu_eteignes_depeche_toi"));
+                samLineManager.PausePipe(2.0f);
+                samLineManager.AddToPipe(samLineManager.FindHelperByName("fais_moi_confiance_enerve"));
+                samLineManager.PausePipe(3.0f);
+                samLineManager.AddToPipe(samLineManager.FindHelperByName("fais_ce_que_je_te_dis_enerve"));
+            } else if (states.GetMindState() == MindStates.PSYCHOPATHE)
+            {
+                samLineManager.PausePipe(2.0f);
+                samLineManager.AddToPipe(samLineManager.FindPsychopatheByName("attention_de_ne_pas_marcher_sur_olivier"));
+                samLineManager.PausePipe(2.0f);
+                samLineManager.AddToPipe(samLineManager.FindPsychopatheByName("attention_derriere_toi_2"));
+                samLineManager.PausePipe(3.0f);
+                samLineManager.AddToPipe(samLineManager.FindPsychopatheByName("au_dela_du_cadavre_ca_sent_comme_dans_la_cave"));
+            }
+        }
+
+        private void ConfigureSoundNyctophobiaRoomCTA()
+        {
+            if (states.GetMindState() == MindStates.HELPER)
+            {
+                samLineManager.AddToPipe(samLineManager.FindHelperByName("aller_on_continue"));
+            }
+        }
+
         private void ConfigureSoundArachnophobiaRoomCTA()
         {
             if (states.GetMindState() == MindStates.HELPER)
@@ -329,6 +366,10 @@ namespace Sam
             {
                 samLineManager.CleanPipe();
                 ConfigureSoundVertigoRoom();
+            } else if (currentRoom.GetRoomName() == "Nyctophobia")
+            {
+                samLineManager.CleanPipe();
+                ConfigureSoundNyctophobiaRoom();
             }
             //samLineManager.CleanPipe();
             //Console._instance.AddLog("ConsoleInstance -- " + msg);
@@ -354,6 +395,10 @@ namespace Sam
             {
                 samLineManager.CleanPipe();
                 ConfigureSoundVertigoRoomCTA();
+            } else if (currentRoom.GetRoomName() == "Nyctophobia")
+            {
+                samLineManager.CleanPipe();
+                ConfigureSoundNyctophobiaRoomCTA();
             }
             //Console._instance.AddLog("ConsoleInstance --" + msg);
         }

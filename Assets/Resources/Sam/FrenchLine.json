@@ -137,6 +137,70 @@
         "fear": "vertigo",
         "callToAction": "bridge",
         "step": "third"
+      },
+      {
+        "name": "dans_cette_salle_il_faut_rester_discret",
+        "duration": 2.0,
+        "mood": "normal",
+        "fear": "nyctophobia",
+        "callToAction": "light_switch",
+        "step": "first"
+      },
+      {
+        "name": "tu_devrais_trouver_un_interupteur",
+        "duration": 2.0,
+        "mood": "normal",
+        "fear": "nyctophobia",
+        "callToAction": "light_switch",
+        "step": "first"
+      },
+      {
+        "name": "il_va_falloir_eteindre_la_lumiere",
+        "duration": 2.0,
+        "mood": "normal",
+        "fear": "nyctophobia",
+        "callToAction": "light_switch",
+        "step": "first"
+      },
+      {
+        "name": "fais_moi_confiance",
+        "duration": 1.0,
+        "mood": "stressed",
+        "fear": "nyctophobia",
+        "callToAction": "light_switch",
+        "step": "second"
+      },
+      {
+        "name": "il_faut_que_tu_eteignes_depeche_toi",
+        "duration": 2.0,
+        "mood": "stressed",
+        "fear": "nyctophobia",
+        "callToAction": "light_switch",
+        "step": "second"
+      },
+      {
+        "name": "fais_moi_confiance_enerve",
+        "duration": 2.0,
+        "mood": "anger",
+        "fear": "nyctophobia",
+        "callToAction": "light_switch",
+        "step": "third"
+      },
+      {
+        "name": "fais_ce_que_je_te_dis_enerve",
+        "duration": 2.0,
+        "mood": "anger",
+        "fear": "nyctophobia",
+        "callToAction": "light_switch",
+        "step": "third"
+      },
+      {
+        "name": "aller_on_continue",
+        "duration": 2.0,
+        "mood": "normal",
+        "fear": "nyctophobia",
+        "callToAction": "light_switch",
+        "step": "third"
       }
     ],
     "plot_twist": [
@@ -266,6 +330,30 @@
         "duration": 3.0,
         "mood": "frustrated",
         "fear": "vertigo",
+        "callToAction": "",
+        "step": ""
+      },
+      {
+        "name": "attention_de_ne_pas_marcher_sur_olivier",
+        "duration": 4.0,
+        "mood": "exitement",
+        "fear": "nyctophobia",
+        "callToAction": "",
+        "step": ""
+      },
+      {
+        "name": "attention_derriere_toi_2",
+        "duration": 4.0,
+        "mood": "happyness",
+        "fear": "nyctophobia",
+        "callToAction": "",
+        "step": ""
+      },
+      {
+        "name": "au_dela_du_cadavre_ca_sent_comme_dans_la_cave",
+        "duration": 4.0,
+        "mood": "cynical",
+        "fear": "nyctophobia",
         "callToAction": "",
         "step": ""
       }

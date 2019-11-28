@@ -97,7 +97,7 @@ namespace Sam
                     {
                         //UpdateRandomRoomConfig();
                         RandomTags(out List<SamTags> tags, random.Next(5, 10));
-                        TriggerManager._instance.UpdateRoomConfig(tags, Fear.Vertigo, (float)random.NextDouble());
+                        TriggerManager._instance.UpdateRoomConfig(tags, Fear.Nyctophobia, (float)random.NextDouble());
                         oldRoom = currentRoom;
                     }
                 }
