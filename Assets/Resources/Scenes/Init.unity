@@ -629,6 +629,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f24db71264258b54f8df37691d7f3df9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &3079918014781246685
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3079918014781246683}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7a8baa88d14b1a4da77034df6f7d2d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &5597430979042430744
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -778,6 +790,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5667065022249503936, guid: 5cd7def724291744f81debbdcd183751,
+        type: 3}
+      propertyPath: m_Name
+      value: GameManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 5667065022249503936, guid: 5cd7def724291744f81debbdcd183751,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5667065022249503993, guid: 5cd7def724291744f81debbdcd183751,
         type: 3}
       propertyPath: ppv
@@ -793,16 +815,6 @@ PrefabInstance:
       propertyPath: indication
       value: 
       objectReference: {fileID: 965346177}
-    - target: {fileID: 5667065022249503936, guid: 5cd7def724291744f81debbdcd183751,
-        type: 3}
-      propertyPath: m_Name
-      value: GameManager
-      objectReference: {fileID: 0}
-    - target: {fileID: 5667065022249503936, guid: 5cd7def724291744f81debbdcd183751,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5667065022249503994, guid: 5cd7def724291744f81debbdcd183751,
         type: 3}
       propertyPath: m_LocalPosition.x
