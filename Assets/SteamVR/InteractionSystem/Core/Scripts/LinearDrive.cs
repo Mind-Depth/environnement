@@ -139,7 +139,7 @@ namespace Valve.VR.InteractionSystem
 
 				if ( repositionGameObject )
 				{
-					transform.position = Vector3.Lerp( startPosition.position, endPosition.position, linearMapping.value );
+					transform.rotation = Quaternion.Lerp( startPosition.rotation, endPosition.rotation, linearMapping.value );
 				}
 			}
 		}

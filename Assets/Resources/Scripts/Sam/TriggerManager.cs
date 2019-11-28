@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 namespace Sam
 {
@@ -108,6 +109,9 @@ namespace Sam
 
        private void Update()
         {
+            if (Input.GetKey(KeyCode.A)) {
+                SceneManager.LoadScene("Game", LoadSceneMode.Single);
+            }
             if (Time.time >= nextTurn)
             {
                 if (!introduction)
