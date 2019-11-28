@@ -28,7 +28,6 @@ public class ResourcesManager : MonoBehaviour {
         if (_instance == null)
         {
             _instance = this;
-            DontDestroyOnLoad(this);
         }
         else if (_instance != this)
         {

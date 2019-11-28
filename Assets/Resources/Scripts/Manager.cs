@@ -2,6 +2,7 @@
 using System;
 using UnityEngine.UI;
 using System.Collections;
+using Sam;
 /**
 * Classe principale instanciée au lancement du programme.  
 * Elle instancie les différents threads utilisés par l'Intelligence artificielle.
@@ -34,7 +35,6 @@ public class Manager : MonoBehaviour
         if (_instance == null)
         {
             _instance = this;
-            DontDestroyOnLoad(this);
         }
         else if (_instance != this)
         {
@@ -101,6 +101,9 @@ public class Manager : MonoBehaviour
                     case GenerationMessage.Type.RoomConfiguration:
                         if (is_started)
                             Orchestration._instance.GenerateNewMap(response);
+                        break;
+                    case GenerationMessage.Type.FearLevel:
+                        TriggerManager._instance.UpdateFear(response.fearIntensity);
                         break;
                     case GenerationMessage.Type.Quit:
                         Console._instance.AddLog("Endding game.");

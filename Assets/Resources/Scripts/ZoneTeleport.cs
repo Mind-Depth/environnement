@@ -5,16 +5,16 @@ using UnityEngine;
 public class ZoneTeleport : MonoBehaviour
 {
 
-    void Update()
-    {
-        if (Input.GetKey(KeyCode.A)) {
+    public void ShowIndication() {
             Teleporter._instance.ShowIndication();
-        }
-        if (Input.GetKey(KeyCode.B)) {
-            Teleporter._instance.TeleportPlayer();
-            Teleporter._instance.HideIndication();
-        }
     }
+
+    public void TeleportPlayer() {
+            Teleporter._instance.HideIndication();
+            Teleporter._instance.TeleportPlayer();
+    }
+
+
 /*     private void OnCollisionStay(Collision collision)
     {
         if (collision.gameObject.tag == "Player" || collision.gameObject.tag == "Hand")
