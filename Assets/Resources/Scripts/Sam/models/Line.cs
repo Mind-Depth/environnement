@@ -11,13 +11,23 @@ namespace Sam
         public string   name;
         public float    duration;
         public string   mood;
+        public string   fear;
+        public string   callToAction;
     }
 
     [Serializable]
-    public class Lines
+    public class MindStateLines
     {
-        public string   lang;
-        public Line[]   lines;
-        public Line presentation;
+        public List<Line> helper;
+        public List<Line> plot_twist;
+        public List<Line> psychopathe;
+    }
+
+    [Serializable]
+    public class SamLines
+    {
+        public MindStateLines mindStateLines;
+        public List<Line> ambiances;
+        public List<Line> introduction;
     }
 }

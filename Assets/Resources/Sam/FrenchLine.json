@@ -1,40 +1,211 @@
 {
   "lang": "fr",
-  "lines": [
+  "mindStateLines": {
+    "helper": [
+      {
+        "name": "dans_cette_salle_il_faut_que_tu_actionnes_le_levier",
+        "duration": 4.0,
+        "mood": "normal",
+        "fear": "nyctophobia",
+        "callToAction": "levier"
+      },
+      {
+        "name": "depeche_toi_si_tu_veux_survivre_il_faut_que_tu_actionnes_le_levier",
+        "duration": 4.0,
+        "mood": "stressed",
+        "fear": "nyctophobia",
+        "callToAction": "levier"
+      },
+      {
+        "name": "actionnes_se_putain_de_levier",
+        "duration": 4.0,
+        "mood": "anger",
+        "fear": "nyctophobia",
+        "callToAction": "levier"
+      }
+    ],
+    "plot_twist": [
+      {
+        "name": "fais_ce_que_je_te_dis_sale_merde",
+        "duration": 4.0,
+        "mood": "anger",
+        "fear": "nyctophobia",
+        "callToAction": "levier"
+      }
+    ],
+    "psychopathe": [
+      {
+        "name": "attention_il_y_en_a_une_sur_toi_ahahah",
+        "duration": 4.0,
+        "mood": "happy",
+        "fear": "arachnophobia",
+        "callToAction": ""
+      },
+      {
+        "name": "je_suis_joyeux",
+        "duration": 4.0,
+        "mood": "happy",
+        "fear": "vertigo",
+        "callToAction": ""
+      },
+      {
+        "name": "tu_te_sent_bien_la_ahahah",
+        "duration": 4.0,
+        "mood": "exitement",
+        "fear": "nyctophobia",
+        "callToAction": ""
+      },
+      {
+        "name": "je_me_suis_jamais_fait_mordre_par_une_araignee_et_toi",
+        "duration": 5.0,
+        "mood": "cynical",
+        "fear": "claustrophobia",
+        "callToAction": ""
+      },
+      {
+        "name": "c_est_sur_que_si_tu_restes_dans_ton_coin_aussi",
+        "duration": 4.0,
+        "mood": "frustrated",
+        "fear": "claustrophobia",
+        "callToAction": ""
+      },
+      {
+        "name": "tu_fais_le_malin_mais_change_de_salle_pour_voir",
+        "duration": 3.0,
+        "mood": "anger",
+        "fear": "vertigo",
+        "callToAction": ""
+      }
+    ]
+  },
+  "ambiances": [
     {
       "name": "attention_il_y_en_a_une_sur_toi_ahahah",
-      "duration": 17.0,
-      "mood": "happy"
+      "duration": 4.0,
+      "mood": "happy",
+      "fear": "arachnophobia",
+      "callToAction": ""
     },
     {
       "name": "tu_te_sent_bien_la_ahahah",
-      "duration": 3.0,
-      "mood": "exitement"
+      "duration": 4.0,
+      "mood": "exitement",
+      "fear": "arachnophobia",
+      "callToAction": ""
     },
     {
       "name": "je_me_suis_jamais_fait_mordre_par_une_araignee_et_toi",
-      "duration": 4.0,
-      "mood": "cynical"
+      "duration": 5.0,
+      "mood": "cynical",
+      "fear": "arachnophobia",
+      "callToAction": ""
     },
     {
       "name": "c_est_sur_que_si_tu_restes_dans_ton_coin_aussi",
-      "duration": 3.0,
-      "mood": "frustrated"
+      "duration": 4.0,
+      "mood": "frustrated",
+      "fear": "arachnophobia",
+      "callToAction": ""
     },
     {
       "name": "tu_fais_le_malin_mais_change_de_salle_pour_voir",
-      "duration": 2.0,
-      "mood": "anger"
-    },
-    {
-      "name": "Fail",
-      "duration": 0.20000000298023225,
-      "mood": ""
+      "duration": 3.0,
+      "mood": "anger",
+      "fear": "arachnophobia",
+      "callToAction": ""
     }
   ],
-  "presentation": {
-    "name": "presentation_sam",
-    "duration": 3.0,
-    "mood": "exitement"
-  }
+  "introduction": [
+    {
+      "name": "intro_allumage_de_la_radio",
+      "duration": 13.0,
+      "mood": "normal",
+      "fear": "",
+      "callToAction": ""
+    },
+    {
+      "name": "depeche_toi_sors_d_ici_il_arrive",
+      "duration": 3.0,
+      "mood": "normal",
+      "fear": "",
+      "callToAction": ""
+    },
+    {
+      "name": "vas_au_fond_et_sors_de_suite",
+      "duration": 3.0,
+      "mood": "normal",
+      "fear": "",
+      "callToAction": ""
+    },
+    {
+      "name": "la_porte_au_fond_sors_de_la",
+      "duration": 2.0,
+      "mood": "stressed",
+      "fear": "",
+      "callToAction": ""
+    },
+    {
+      "name": "sors_de_la_putain",
+      "duration": 2.0,
+      "mood": "feared",
+      "fear": "",
+      "callToAction": ""
+    },
+    {
+      "name": "okay_ca_c_est_regle",
+      "duration": 3.0,
+      "mood": "feared",
+      "fear": "",
+      "callToAction": ""
+    },
+    {
+      "name": "je_m_appelle_sam_1",
+      "duration": 4.0,
+      "mood": "feared",
+      "fear": "",
+      "callToAction": ""
+    },
+    {
+      "name": "premiere_chose_a_faire_rallumer_la_lumiere",
+      "duration": 7.0,
+      "mood": "feared",
+      "fear": "",
+      "callToAction": ""
+    },
+    {
+      "name": "voila_la_on_y_voit_mieux",
+      "duration": 2.0,
+      "mood": "feared",
+      "fear": "",
+      "callToAction": "lever"
+    },
+    {
+      "name": "il_va_falloir_que_tu_m_ecoutes",
+      "duration": 5.0,
+      "mood": "feared",
+      "fear": "",
+      "callToAction": "lever"
+    },
+    {
+      "name": "premiere_chose_a_faire_passer_dans_une_nouvelle_salle",
+      "duration": 3.0,
+      "mood": "feared",
+      "fear": "",
+      "callToAction": "lever"
+    },
+    {
+      "name": "avance_quoi_qu_il_arrive",
+      "duration": 2.0,
+      "mood": "feared",
+      "fear": "",
+      "callToAction": "lever"
+    },
+    {
+      "name": "quoi_que_tu_puisses_voir",
+      "duration": 0.5,
+      "mood": "feared",
+      "fear": "",
+      "callToAction": "lever"
+    }
+  ]
 }
