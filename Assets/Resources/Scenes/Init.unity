@@ -152,7 +152,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 76856702}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f24db71264258b54f8df37691d7f3df9, type: 3}
+  m_Script: {fileID: 11500000, guid: 9a571429342733046ad3d936495ded95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &103010802 stripped
@@ -323,7 +323,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 886374603}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f24db71264258b54f8df37691d7f3df9, type: 3}
+  m_Script: {fileID: 11500000, guid: 9a571429342733046ad3d936495ded95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &965346177 stripped
@@ -414,7 +414,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1636727619}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f24db71264258b54f8df37691d7f3df9, type: 3}
+  m_Script: {fileID: 11500000, guid: 9a571429342733046ad3d936495ded95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!4 &1699778287 stripped
@@ -626,7 +626,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3079918014781246683}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f24db71264258b54f8df37691d7f3df9, type: 3}
+  m_Script: {fileID: 11500000, guid: 9a571429342733046ad3d936495ded95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &5597430979042430744
@@ -768,7 +768,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5597430979042430745}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f24db71264258b54f8df37691d7f3df9, type: 3}
+  m_Script: {fileID: 11500000, guid: 9a571429342733046ad3d936495ded95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &5667065021866425439
@@ -778,6 +778,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5667065022249503936, guid: 5cd7def724291744f81debbdcd183751,
+        type: 3}
+      propertyPath: m_Name
+      value: GameManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 5667065022249503936, guid: 5cd7def724291744f81debbdcd183751,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5667065022249503993, guid: 5cd7def724291744f81debbdcd183751,
         type: 3}
       propertyPath: ppv
@@ -793,16 +803,6 @@ PrefabInstance:
       propertyPath: indication
       value: 
       objectReference: {fileID: 965346177}
-    - target: {fileID: 5667065022249503936, guid: 5cd7def724291744f81debbdcd183751,
-        type: 3}
-      propertyPath: m_Name
-      value: GameManager
-      objectReference: {fileID: 0}
-    - target: {fileID: 5667065022249503936, guid: 5cd7def724291744f81debbdcd183751,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5667065022249503994, guid: 5cd7def724291744f81debbdcd183751,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -890,6 +890,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 5667065021866425440}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f24db71264258b54f8df37691d7f3df9, type: 3}
+  m_Script: {fileID: 11500000, guid: 9a571429342733046ad3d936495ded95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
