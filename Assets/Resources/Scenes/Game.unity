@@ -1528,6 +1528,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 627f35f1f75c3a041be4fcae43ac9787, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  configuration_root: ../generation/config
 --- !u!4 &1767551141
 Transform:
   m_ObjectHideFlags: 0

@@ -37,7 +37,7 @@ public class Orchestration : MonoBehaviour
         {
             models_received.Add(model.type, model.modelIds);
         }
-        ReplaceAssets(models_received, map.transform, spawner);
+        ReplaceAssets(models_received, map.transform, spawner, message.fearIntensity);
         if (spawner.Count != 0)
         {
             spawner.OrderBy(x => Guid.NewGuid()).FirstOrDefault();
@@ -51,7 +51,7 @@ public class Orchestration : MonoBehaviour
         RoomManager._instance.MapIsReady(map);
     }
 
-    public void ReplaceAssets(Dictionary<ModelConfiguration.Type, List<string>> models_received, Transform parent, List<Spawner> spawner)
+    public void ReplaceAssets(Dictionary<ModelConfiguration.Type, List<string>> models_received, Transform parent, List<Spawner> spawner, float fearIntensity)
     {
         List<Transform> children = new List<Transform>();
         foreach (Transform child in parent)
@@ -61,7 +61,7 @@ public class Orchestration : MonoBehaviour
         foreach (Transform child in children)
         {
             if (child.transform.childCount > 0)
-                ReplaceAssets(models_received, child, spawner);
+                ReplaceAssets(models_received, child, spawner, fearIntensity);
             TemplateTypeModel config = child.GetComponent<TemplateTypeModel>();
             if (config != null)
             {
@@ -74,6 +74,10 @@ public class Orchestration : MonoBehaviour
                 if (type == ModelConfiguration.Type.Mob)
                     spawner.Add(obj.GetComponent<Spawner>());
                 Destroy(child.gameObject);
+            }
+            else if (child.GetComponent<SpawnerMaterial>() != null)
+            {
+                child.GetComponent<SpawnerMaterial>().Activate(fearIntensity);
             }
         }
     }
