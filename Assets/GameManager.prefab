@@ -174,8 +174,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ppv: {fileID: 0}
   pppSave: {fileID: 11400000, guid: a0409a5a85f397640b7a2477df69062b, type: 2}
-  player: {fileID: 0}
-  indication: {fileID: 0}
+  player: {fileID: 2417245971970826750, guid: 11940b12bf7219d46bb126482cc094b3, type: 3}
+  indication: {fileID: 3596864560480292036, guid: c5e7c225e280162439d3fdb7c719748c,
+    type: 3}
 --- !u!114 &5667065022249503991
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -194,7 +195,10 @@ MonoBehaviour:
   startAmbianceLine: 10
   startPrez: 1
   intervalTurn: 1
-  introduction: 1
+  mindStates: 0
+  orderState: 0
+  samLyricStates: 0
+  gameStates: 0
 --- !u!82 &5667065022249503992
 AudioSource:
   m_ObjectHideFlags: 0
