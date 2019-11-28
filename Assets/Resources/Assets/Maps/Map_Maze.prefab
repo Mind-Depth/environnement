@@ -3962,10 +3962,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Prop_Crate_Metal_03
       objectReference: {fileID: 0}
-    - target: {fileID: 172200, guid: b0eb8fcfe34bfa54d86e8fcc58f9ea64, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 416344, guid: b0eb8fcfe34bfa54d86e8fcc58f9ea64, type: 3}
       propertyPath: m_LocalPosition.x
       value: -10.763688
@@ -6215,10 +6211,6 @@ PrefabInstance:
     - target: {fileID: 187514, guid: baad99cbf08303549860656d6f6d6933, type: 3}
       propertyPath: m_Name
       value: SM_Prop_Crate_Metal_01
-      objectReference: {fileID: 0}
-    - target: {fileID: 187514, guid: baad99cbf08303549860656d6f6d6933, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 455104, guid: baad99cbf08303549860656d6f6d6933, type: 3}
       propertyPath: m_LocalPosition.x
