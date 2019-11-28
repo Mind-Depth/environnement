@@ -38,6 +38,7 @@ namespace Sam
         private List<Line> cynicalLines = new List<Line>();
         private List<Line> frustratedLines = new List<Line>();
         private List<Line> angerLines = new List<Line>();
+        private List<Line> lineCurrentRoom = new List<Line>();
         
         public SamLinesManager(AudioSource audioSource, string language)
         {
@@ -49,7 +50,7 @@ namespace Sam
             // TODO: Each paramaters here will be changed by class global variables.
             // TODO: if (intro) 3 states availables (normal | stressed | anger); get them in introduction list. Select line for each roooms (firstroom | second room).
             // TODO: if (play mode) 5 states availables (HELPER(normal | stressed | anger) | PLOT_TWIST | PSYCHOPATHE); get them in lines list. Select line for each roooms (Arachnophobia | Vertigo | Nyctophobia | Claustrophobia) for each CTA (levier | armoire) for each mood (happyness | exitement | cynical | frustrated | anger) but (normal | stressed | anger) for helper.
-            Debug.Log(samLinesJson.FindHelper("levier", "nyctophobia", "stressed")[0].name);
+
             /*samLinesObject = samLinesJson.GetLines();
             samAmbiancesObject = samLinesJson.GetAmbiances();
             samIntroductionObject = samLinesJson.GetIntroduction();
@@ -70,8 +71,25 @@ namespace Sam
         public Line FindIntroductionByName(string name)
         { return samLinesJson.FindIntroductionByName(name); }
 
+        public Line FindHelperByName(string name)
+        { return samLinesJson.FindHelperByName(name); }
+
+        public Line FindPsychopatheByName(string name)
+        { return samLinesJson.FindPsychopatheByName(name); }
+
         public Line FindIntroductionByCTA(string cta)
         { return samLinesJson.FindIntroductionByCTA(cta); }
+
+        public List<Line> FindHelper(string cta, string fear, string mood, string step)
+        { return samLinesJson.FindHelper(cta, fear, mood, step); }
+
+        public void AddListToPipe(List<Line> list)
+        {
+            foreach (Line line in list)
+            {
+                AddToPipe(line);
+            }
+        }
 
         public void PlayPipe()
         {
@@ -80,6 +98,11 @@ namespace Sam
                 Play(pipe[0]);
                 pipe.RemoveAt(0);
             }
+        }
+
+        public List<Line> GetPipe()
+        {
+            return this.pipe;
         }
 
         public void CleanPipe()
@@ -106,8 +129,6 @@ namespace Sam
 
         public void SetLinesByMood(List<Line> allSamLines)
         {
-            Debug.Log("SetLinesByMood > " + allSamLines[0].name);
-
             for (int i = 0; i < allSamLines.Count; i++)
             {
                 if (allSamLines[i].mood == "happy")
@@ -150,14 +171,6 @@ namespace Sam
             this.audioSource = audioSource;
             soundManager.SetAudioSource(this.audioSource);
         }
-        /*
-        public string[] GetSamLinesName()
-        {
-            Debug.Log("samelinesJSON Object = " + samLinesJson);
-            samLines2 = samLinesJson.LinesToStringArray(lines);
-            
-            return samLines2;
-        }*/
 
         public List<Line> GetLinesByMood(string mood)
         {
@@ -219,17 +232,6 @@ namespace Sam
             return null;
         }
 
-        /*public Line FindSamLineObjectByName(string name)
-        {
-            Line samLineObject ;
-
-            for (int i = 0; i < lines.lines.lenght; i++)
-            {
-                Debug.Log("--- " + lines + " ---");
-            }
-            return samLineObject;
-        }
-        */
         // Use the sound manager for load and play the sound asked in parameter.
         public void Play(Line songToPlay)
         {

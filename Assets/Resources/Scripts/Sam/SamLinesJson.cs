@@ -105,10 +105,10 @@ namespace Sam
         public List<Line> FindPsychopatheByCTA(string cta)
         { return GetPsychopathe().FindAll((psychopathe) => psychopathe.callToAction.Contains(cta)); }
 
-        // call to action && Fear && Mood
+        // call to action && Fear && Mood && step
 
-        public List<Line> FindHelper(string cta, string fear, string mood)
-        { return GetHelper().FindAll((helperLine) => helperLine.callToAction == cta && helperLine.fear == fear && helperLine.mood == mood); }
+        public List<Line> FindHelper(string cta, string fear, string mood, string step)
+        { return GetHelper().FindAll((helperLine) => helperLine.callToAction == cta && helperLine.fear == fear && helperLine.mood == mood && helperLine.step == step); }
 
         public List<Line> FindPlotTwist(string cta, string fear, string mood)
         { return GetPlotTwist().FindAll((plotTwist) => plotTwist.callToAction == cta && plotTwist.fear == fear && plotTwist.mood == mood); }
@@ -119,9 +119,13 @@ namespace Sam
         // name
 
         public Line FindIntroductionByName(string name)
-        {
-            return GetIntroduction().Find((intro) => intro.name == name);
-        }
+        { return GetIntroduction().Find((intro) => intro.name == name); }
+
+        public Line FindHelperByName(string name)
+        { return GetHelper().Find((helper) => helper.name == name); }
+
+        public Line FindPsychopatheByName(string name)
+        { return GetPsychopathe().Find((psychoathe) => psychoathe.name == name); }
 
         // intro cta
 

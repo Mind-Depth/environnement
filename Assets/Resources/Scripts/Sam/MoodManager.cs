@@ -14,6 +14,7 @@ namespace Sam
         float mood = 100.0f;
         float sinceLastSetMood = 0;
         int countUserFeelingChangement = 0;
+        float userFeelingVariation = 0;
 
         public MoodManager(float mood)
         {
@@ -57,6 +58,11 @@ namespace Sam
             return userFeelingVariation;
         }
 
+        public void SetUserFeelingVariation(float variation)
+        {
+            userFeelingVariation = variation;
+        }
+
         public float GetMoodValue()
         {
             return this.mood;
@@ -81,39 +87,28 @@ namespace Sam
             return newValue - oldValue;
         }
 
-        public void ComputeMood(float fearLevel)
+        public void ComputeMood(float fearLevel, float timeSinceRoomStarted)
         {
-            if (fearLevel == 0)
-            {
-                this.mood -= 1;
-            }
-            else if (fearLevel == 1)
-            {
-                this.mood += 1;
+            float variation = userFeelingVariation / 100;
+            if (variation != 0) {
+                if (fearLevel == 0)
+                {
+                    SetMood(this.mood - ((1 * variation) + variation) * (Time.time - timeSinceRoomStarted));
+                }
+                else if (fearLevel == 1)
+                {
+                    SetMood(this.mood + ((1 * variation) + variation) * (Time.time - timeSinceRoomStarted));
+                }
+            } else {
+                if (fearLevel == 0)
+                {
+                    SetMood(this.mood - 1);
+                }
+                else if (fearLevel == 1)
+                {
+                    SetMood(this.mood + 1);
+                }
             }
         }
-
-        /* public float ComputeMood(List<History> histories)
-        {
-            float result = 0;
-
-            if (histories.Count > computingThreshold)
-            {
-                for (int i = histories.Count - (computingThreshold); i < histories.Count; i++)
-                {
-                  // result += ComputeGap(histories[i].fearLevelDelta, histories[i - 1].fearLevelDelta);
-                   result += histories[i].fearLevelDelta;
-                    Debug.Log(histories[i].fearLevelDelta);
-                }
-                // this.SetMood(this.mood + (result / computingThreshold));
-                
-                Debug.Log("Result pourcent:: " + ((result / computingThreshold) * 100));
-                
-                this.SetMood(this.mood + ((result / computingThreshold) * 100));
-            }
-
-            return mood;
-        }*/
-
     } 
 }

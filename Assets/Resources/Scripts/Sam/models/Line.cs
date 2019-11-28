@@ -13,6 +13,7 @@ namespace Sam
         public string   mood;
         public string   fear;
         public string   callToAction;
+        public string   step;
     }
 
     [Serializable]

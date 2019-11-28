@@ -3,25 +3,140 @@
   "mindStateLines": {
     "helper": [
       {
-        "name": "dans_cette_salle_il_faut_que_tu_actionnes_le_levier",
+        "name": "bouge_plus_les_murs_vont_arreter_de_bouger",
         "duration": 4.0,
         "mood": "normal",
-        "fear": "nyctophobia",
-        "callToAction": "levier"
+        "fear": "claustrophobia",
+        "callToAction": "do_not_move",
+        "step": "first"
       },
       {
-        "name": "depeche_toi_si_tu_veux_survivre_il_faut_que_tu_actionnes_le_levier",
-        "duration": 4.0,
+        "name": "reste_immobile_3",
+        "duration": 2.0,
+        "mood": "normal",
+        "fear": "claustrophobia",
+        "callToAction": "do_not_move",
+        "step": "first"
+      },
+      {
+        "name": "ah_merde_c_est_pas_cette_salle",
+        "duration": 2.0,
         "mood": "stressed",
-        "fear": "nyctophobia",
-        "callToAction": "levier"
+        "fear": "claustrophobia",
+        "callToAction": "do_not_move",
+        "step": "seconde"
       },
       {
-        "name": "actionnes_se_putain_de_levier",
-        "duration": 4.0,
+        "name": "bouge_plus",
+        "duration": 1.0,
+        "mood": "stressed",
+        "fear": "claustrophobia",
+        "callToAction": "do_not_move",
+        "step": "third"
+      },
+      {
+        "name": "je_t_ai_dis_de_pas_bouger",
+        "duration": 2.0,
         "mood": "anger",
-        "fear": "nyctophobia",
-        "callToAction": "levier"
+        "fear": "claustrophobia",
+        "callToAction": "do_not_move",
+        "step": "third"
+      },
+      {
+        "name": "bouuuuge_pluuus",
+        "duration": 2.0,
+        "mood": "anger",
+        "fear": "claustrophobia",
+        "callToAction": "do_not_move",
+        "step": "third"
+      },
+      {
+        "name": "ouvre_la_trappe",
+        "duration": 4.0,
+        "mood": "normal",
+        "fear": "arachnophobia",
+        "callToAction": "open_trap_door",
+        "step": "first"
+      },
+      {
+        "name": "ouvre_cte_trappe",
+        "duration": 1.0,
+        "mood": "normal",
+        "fear": "arachnophobia",
+        "callToAction": "open_trap_door",
+        "step": "first"
+      },
+      {
+        "name": "fais_ce_que_je_te_dis",
+        "duration": 2.0,
+        "mood": "stressed",
+        "fear": "arachnophobia",
+        "callToAction": "open_trap_door",
+        "step": "second"
+      },
+      {
+        "name": "fais_ce_que_je_te_dis_tu_veux_mourrir",
+        "duration": 3.0,
+        "mood": "anger",
+        "fear": "arachnophobia",
+        "callToAction": "open_trap_door",
+        "step": "third"
+      },
+      {
+        "name": "alors_ca_a_marche",
+        "duration": 1.0,
+        "mood": "happy",
+        "fear": "arachnophobia",
+        "callToAction": "open_trap_door",
+        "step": "third"
+      },
+      {
+        "name": "ne_prend_pas_la_passerelle_2",
+        "duration": 2.0,
+        "mood": "normal",
+        "fear": "vertigo",
+        "callToAction": "bridge",
+        "step": "first"
+      },
+      {
+        "name": "ok_tkt_pas",
+        "duration": 4.0,
+        "mood": "normal",
+        "fear": "vertigo",
+        "callToAction": "bridge",
+        "step": "first"
+      },
+      {
+        "name": "aller_je_sais_que_tu_peux_le_faire",
+        "duration": 2.0,
+        "mood": "normal",
+        "fear": "vertigo",
+        "callToAction": "bridge",
+        "step": "first"
+      },
+      {
+        "name": "il_faut_que_tu_sortes_d_ici",
+        "duration": 2.0,
+        "mood": "stressed",
+        "fear": "vertigo",
+        "callToAction": "bridge",
+        "step": "second"
+      },
+      {
+        "name": "saute_putain",
+        "duration": 2.0,
+        "mood": "anger",
+        "fear": "vertigo",
+        "callToAction": "bridge",
+        "step": "third"
+      },
+      {
+        "name": "tu_sautes_ou_je_t_y_pousse",
+        "duration": 2.0,
+        "mood": "anger",
+        "fear": "vertigo",
+        "callToAction": "bridge",
+        "step": "third"
       }
     ],
     "plot_twist": [
@@ -35,46 +150,124 @@
     ],
     "psychopathe": [
       {
-        "name": "attention_il_y_en_a_une_sur_toi_ahahah",
-        "duration": 4.0,
-        "mood": "happy",
-        "fear": "arachnophobia",
-        "callToAction": ""
-      },
-      {
-        "name": "je_suis_joyeux",
-        "duration": 4.0,
-        "mood": "happy",
-        "fear": "vertigo",
-        "callToAction": ""
-      },
-      {
-        "name": "tu_te_sent_bien_la_ahahah",
-        "duration": 4.0,
-        "mood": "exitement",
-        "fear": "nyctophobia",
-        "callToAction": ""
-      },
-      {
-        "name": "je_me_suis_jamais_fait_mordre_par_une_araignee_et_toi",
-        "duration": 5.0,
+        "name": "tu_sais_que_ca_va_etre_galere_pour_nettoyer",
+        "duration": 3.0,
         "mood": "cynical",
         "fear": "claustrophobia",
-        "callToAction": ""
+        "callToAction": "",
+        "step": "first"
       },
       {
-        "name": "c_est_sur_que_si_tu_restes_dans_ton_coin_aussi",
-        "duration": 4.0,
+        "name": "fais_moi_confiance_ne_bouge_pas",
+        "duration": 2.0,
+        "mood": "anger",
+        "fear": "claustrophobia",
+        "callToAction": "",
+        "step": ""
+      },
+      {
+        "name": "il_y_a_bien_ta_tete_qui_va_bloquer_l_avancement_des_murs",
+        "duration": 3.0,
+        "mood": "exitement",
+        "fear": "claustrophobia",
+        "callToAction": "",
+        "step": ""
+      },
+      {
+        "name": "ah_mais_merde_on_dirait_quelqu_un_qui_va_mourrir",
+        "duration": 2.0,
+        "mood": "happyness",
+        "fear": "claustrophobia",
+        "callToAction": "exitment",
+        "step": ""
+      },
+      {
+        "name": "on_arrive_a_ma_partie_preferee",
+        "duration": 2.0,
         "mood": "frustrated",
         "fear": "claustrophobia",
-        "callToAction": ""
+        "callToAction": "",
+        "step": ""
       },
       {
-        "name": "tu_fais_le_malin_mais_change_de_salle_pour_voir",
+        "name": "tu_kiffes_hein",
+        "duration": 1.0,
+        "mood": "exitement",
+        "fear": "arachnophobia",
+        "callToAction": "",
+        "step": ""
+      },
+      {
+        "name": "tu_pourras_pas_fuir_toute_ta_vie",
+        "duration": 2.0,
+        "mood": "frustrated",
+        "fear": "arachnophobia",
+        "callToAction": "",
+        "step": ""
+      },
+      {
+        "name": "creve",
+        "duration": 2.0,
+        "mood": "anger",
+        "fear": "arachnophobia",
+        "callToAction": "",
+        "step": ""
+      },
+      {
+        "name": "des_que_ca_a_pris_gout_a_la_viande",
+        "duration": 4.0,
+        "mood": "cynical",
+        "fear": "arachnophobia",
+        "callToAction": "",
+        "step": ""
+      },
+      {
+        "name": "oh_oui_j_adoooore",
+        "duration": 2.0,
+        "mood": "happyness",
+        "fear": "arachnophobia",
+        "callToAction": "",
+        "step": ""
+      },
+      {
+        "name": "douce_melodie_des_os_s_ecraser_sur_le_sol",
+        "duration": 5.0,
+        "mood": "happyness",
+        "fear": "vertigo",
+        "callToAction": "",
+        "step": ""
+      },
+      {
+        "name": "il_y_a_deja_tes_petits_camarades_en_bas",
+        "duration": 2.0,
+        "mood": "cinical",
+        "fear": "vertigo",
+        "callToAction": "",
+        "step": ""
+      },
+      {
+        "name": "je_t_en_supplie_saute_ce_erait_tellement_bon",
+        "duration": 6.0,
+        "mood": "exitement",
+        "fear": "vertigo",
+        "callToAction": "",
+        "step": ""
+      },
+      {
+        "name": "saute_dans_ce_putain_de_trou",
         "duration": 3.0,
         "mood": "anger",
         "fear": "vertigo",
-        "callToAction": ""
+        "callToAction": "",
+        "step": ""
+      },
+      {
+        "name": "tu_m_as_fais_confiance_jusqu_ici_et_tu_arretes",
+        "duration": 3.0,
+        "mood": "frustrated",
+        "fear": "vertigo",
+        "callToAction": "",
+        "step": ""
       }
     ]
   },
@@ -206,6 +399,13 @@
       "mood": "feared",
       "fear": "",
       "callToAction": "lever"
+    },
+    {
+      "name": "normalement_il_ne_devrait_pas_nous_retrouver_ici",
+      "duration": 3.0,
+      "mood": "normal",
+      "fear": "",
+      "callToAction": ""
     }
   ]
 }
