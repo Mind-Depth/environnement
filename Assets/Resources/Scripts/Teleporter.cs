@@ -20,10 +20,6 @@ public class Teleporter : MonoBehaviour
         if (_instance == null)
         {
             _instance = this;
-            DontDestroyOnLoad(this);
-            DontDestroyOnLoad(ppv);
-            DontDestroyOnLoad(player);
-            DontDestroyOnLoad(indication);
         }
         else if (_instance != this)
         {
