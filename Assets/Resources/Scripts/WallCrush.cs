@@ -36,8 +36,6 @@ public class WallCrush : MonoBehaviour
     }
 
     private void OnTriggerEnter(Collider other) {
-        Debug.Log("wuut");
-        Debug.Log(other.tag);
         if (other.tag == "Player") {
             ppv = ResourcesManager._instance.getPPV();
             ppv.profile = ppp;
