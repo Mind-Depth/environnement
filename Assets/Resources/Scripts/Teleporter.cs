@@ -43,6 +43,7 @@ public class Teleporter : MonoBehaviour
             is_teleporting = true;
             ppv.profile = pppSave;
             RoomManager._instance.RequestRoom();
+            indication.gameObject.SetActive(false);
         }
     }
 
