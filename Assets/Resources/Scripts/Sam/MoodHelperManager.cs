@@ -7,14 +7,14 @@ using System.Linq;
 
 namespace Sam
 {
-    public class MoodHelpingManager : MonoBehaviour
+    public class MoodHelperManager : MonoBehaviour
     {
         public int computingThreshold = 2;
 
         float mood = 100.0f;
         float sinceLastSetMood = 0;
 
-        public MoodHelpingManager(float mood)
+        public MoodHelperManager(float mood)
         {
             this.mood = mood;
         }
@@ -57,11 +57,11 @@ namespace Sam
         {
             if (state == OrderStates.ORDER_HAS_BEEN_GIVEN)
             {
-                this.mood -= 1;
+                SetMood(this.mood - 1);
             }
             else if (state == OrderStates.ORDER_HAS_BEEN_DONE)
             {
-                this.mood = 100;
+                SetMood(100);
             }
         }
     } 
