@@ -363,6 +363,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: e83bc948-24ca-4ce1-937e-b92b0c7b5876
+  fear: 0
+  generic: 0
+  intro: -1
   description: 
   categories_config:
   - use_min: 1
