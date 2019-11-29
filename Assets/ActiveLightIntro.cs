@@ -10,10 +10,16 @@ public class ActiveLightIntro : MonoBehaviour
 
     public PostProcessVolume ppv;
     public PostProcessProfile ppp;
+    public PostProcessProfile pppSave;
+    public bool ActiveLight = true;
     // Start is called before the first frame update
     void Start()
     {
-        
+        if (pppSave)
+        {
+            ppv = ResourcesManager._instance.getPPV();
+            ppv.profile = ppp;
+        }
     }
 
     // Update is called once per frame
@@ -24,12 +30,12 @@ public class ActiveLightIntro : MonoBehaviour
 
     public void ActiveLights() {
             ppv = ResourcesManager._instance.getPPV();
-            ppv.profile = ppp;
+            ppv.profile = pppSave;
             for (int i = 0; i < light.Length; i++) {
-                light[i].SetActive(true);
+                light[i].SetActive(ActiveLight);
             }
             for (int i = 0; i < lightMaterial.Length; i++) {
-                lightMaterial[i].SetActive(true);
+                lightMaterial[i].SetActive(ActiveLight);
             }
     }
 }

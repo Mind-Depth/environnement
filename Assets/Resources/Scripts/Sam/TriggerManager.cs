@@ -250,7 +250,7 @@ namespace Sam
         {
             if (states.GetMindState() == MindStates.HELPER)
             {
-                samLineManager.AddToPipe(samLineManager.FindHelperByName("alors_ca_a_marche"));
+                //samLineManager.AddToPipe(samLineManager.FindHelperByName("alors_ca_a_marche"));
             }
         }
 
@@ -313,7 +313,7 @@ namespace Sam
         }
         public void SpiderFearTrigger()
         {
-            GameObject spiderSpwaner = Instantiate(spwanerPrefab, new Vector3(RandomNumber(200), 0, 0), Quaternion.identity);
+            GameObject spiderSpwaner = Instantiate(spwanerPrefab, new Vector3(0, 0, 0), Quaternion.identity);
             Spawner spSpwaner = spiderSpwaner.GetComponent<Spawner>();
             spSpwaner.minCount = 15;
             spSpwaner.maxCount = 20;
@@ -365,7 +365,10 @@ namespace Sam
         {
             string msg = "[SAM] received a event is trigger ";
             Debug.Log("UpdateTriggerEvents -- " + msg);
-            if (currentRoom.GetRoomName() == "second_room")
+            samLineManager.CleanPipe();
+            ConfigureSoundArachnophobiaRoomCTA();
+            SpiderFearTrigger();
+            /*if (currentRoom.GetRoomName() == "second_room")
             {
                 samLineManager.CleanPipe();
                 ConfigureSoundSecondRoomAfterCta();
@@ -385,7 +388,7 @@ namespace Sam
             {
                 samLineManager.CleanPipe();
                 ConfigureSoundNyctophobiaRoomCTA();
-            }
+            }*/
             //Console._instance.AddLog("ConsoleInstance --" + msg);
         }
     }
