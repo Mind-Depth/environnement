@@ -313,7 +313,7 @@ namespace Sam
         }
         public void SpiderFearTrigger()
         {
-            GameObject spiderSpwaner = Instantiate(spwanerPrefab, new Vector3(0, 0, 0), Quaternion.identity);
+            GameObject spiderSpwaner = Instantiate(spwanerPrefab, new Vector3(0, 0, 0), Quaternion.identity, RoomManager._instance.current_map.transform);
             Spawner spSpwaner = spiderSpwaner.GetComponent<Spawner>();
             spSpwaner.minCount = 15;
             spSpwaner.maxCount = 20;
@@ -365,30 +365,34 @@ namespace Sam
         {
             string msg = "[SAM] received a event is trigger ";
             Debug.Log("UpdateTriggerEvents -- " + msg);
-            samLineManager.CleanPipe();
-            ConfigureSoundArachnophobiaRoomCTA();
-            SpiderFearTrigger();
-            /*if (currentRoom.GetRoomName() == "second_room")
+            //samLineManager.CleanPipe();
+            //ConfigureSoundArachnophobiaRoomCTA();
+            //SpiderFearTrigger();
+            if (currentRoom.GetRoomName() == "second_room")
             {
                 samLineManager.CleanPipe();
                 ConfigureSoundSecondRoomAfterCta();
             }
-            if (currentRoom.GetRoomName() == "Claustrophobia") {
+            if (currentRoom.GetRoomName() == "Claustrophobia")
+            {
                 samLineManager.CleanPipe();
                 ConfigureSoundClaustrophobiaRoomAfterCta();
-            } else if (currentRoom.GetRoomName() == "Arachnophobia")
+            }
+            else if (currentRoom.GetRoomName() == "Arachnophobia")
             {
                 samLineManager.CleanPipe();
                 ConfigureSoundArachnophobiaRoomCTA();
-            } else if (currentRoom.GetRoomName() == "Vertigo")
+            }
+            else if (currentRoom.GetRoomName() == "Vertigo")
             {
                 samLineManager.CleanPipe();
                 ConfigureSoundVertigoRoomCTA();
-            } else if (currentRoom.GetRoomName() == "Nyctophobia")
+            }
+            else if (currentRoom.GetRoomName() == "Nyctophobia")
             {
                 samLineManager.CleanPipe();
                 ConfigureSoundNyctophobiaRoomCTA();
-            }*/
+            }
             //Console._instance.AddLog("ConsoleInstance --" + msg);
         }
     }

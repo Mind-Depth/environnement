@@ -14,7 +14,7 @@ public class Spawner : MonoBehaviour
         for (int i = 0; i < count; ++i)
         {
             float scale = Mathf.Lerp(minScale, maxScale, RandomTools.ClampedGaussian(power, power));
-            Instantiate(entity, transform.position, transform.rotation).transform.localScale = new Vector3(scale, scale, scale);
+            Instantiate(entity, transform.position, transform.rotation, transform).transform.localScale = new Vector3(scale, scale, scale);
         }
     }
 }

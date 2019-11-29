@@ -531,6 +531,9 @@ MonoBehaviour:
   - use_min: 1
     use_max: 3
     type: 2
+  - use_min: 1
+    use_max: 5
+    type: 1
 --- !u!114 &6093268320323047743
 MonoBehaviour:
   m_ObjectHideFlags: 0
