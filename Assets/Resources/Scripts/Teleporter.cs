@@ -45,7 +45,7 @@ public class Teleporter : MonoBehaviour
         }
     }
 
-    public void TeleportPlayerBack(float new_position_y)
+    public void TeleportPlayerBack()
     {
         is_teleporting = false;
     }

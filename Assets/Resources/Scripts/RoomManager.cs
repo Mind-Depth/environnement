@@ -36,6 +36,6 @@ public class RoomManager : MonoBehaviour
         if (current_map != null)
             Destroy(current_map.gameObject);
         current_map = map;
-        Teleporter._instance.TeleportPlayerBack(map.GetComponent<MapInformations>().point_to_teleport.position.y);
+        Teleporter._instance.TeleportPlayerBack();
     }
  }
