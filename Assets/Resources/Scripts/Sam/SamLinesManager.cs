@@ -25,13 +25,6 @@ namespace Sam
         private SoundManager    soundManager;
         private List<Line>      pipe;
 
-        // TODO: Set and use current Sam's state moods.
-        // TODO: Set and use current call to action.
-        // TODO: Set and use current fear.
-        //
-        // TODO: Set and use Game State.
-        // TODO: Set and use Mind States.
-
         // Mood Sam Line
         private List<Line> happyLines = new List<Line>();
         private List<Line> exitementLines = new List<Line>();
@@ -47,14 +40,6 @@ namespace Sam
 
             samLinesJson = new SamLinesJson(this.language);
             samLines = samLinesJson.LoadJSONLines();
-            // TODO: Each paramaters here will be changed by class global variables.
-            // TODO: if (intro) 3 states availables (normal | stressed | anger); get them in introduction list. Select line for each roooms (firstroom | second room).
-            // TODO: if (play mode) 5 states availables (HELPER(normal | stressed | anger) | PLOT_TWIST | PSYCHOPATHE); get them in lines list. Select line for each roooms (Arachnophobia | Vertigo | Nyctophobia | Claustrophobia) for each CTA (levier | armoire) for each mood (happyness | exitement | cynical | frustrated | anger) but (normal | stressed | anger) for helper.
-
-            /*samLinesObject = samLinesJson.GetLines();
-            samAmbiancesObject = samLinesJson.GetAmbiances();
-            samIntroductionObject = samLinesJson.GetIntroduction();
-            */
             soundManager = new SoundManager(audioSource, "Sam/SamLines/" + this.language + "/");
             pipe = new List<Line>();
 
@@ -91,6 +76,15 @@ namespace Sam
             }
         }
 
+        public Line GetCurrentLine()
+        {
+            if (this.pipe.Count > 0)
+            {
+                return this.pipe[0];
+            }
+            return null;
+        }
+
         public void PlayPipe()
         {
             if (pipe.Count != 0)
@@ -114,11 +108,6 @@ namespace Sam
         {
             this.pipe.Add(new Line { name = "blank", duration = time, mood = "" });
         }
-
-        /*public Lines GetSamLines()
-        {
-            return this.lines;
-        }*/
 
         public bool SongIsRunning()
         {
