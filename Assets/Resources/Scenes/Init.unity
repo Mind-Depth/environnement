@@ -901,6 +901,12 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8544365592141655585, guid: 2da8e3471192c421b9c130d3eb0764ac,
         type: 3}
+    - target: {fileID: 5667065022249503991, guid: 5cd7def724291744f81debbdcd183751,
+        type: 3}
+      propertyPath: spwanerPrefab
+      value: 
+      objectReference: {fileID: 7480138160241596116, guid: fdab89c529d17b04092447ec1955c922,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5cd7def724291744f81debbdcd183751, type: 3}
 --- !u!1 &5667065021866425440 stripped
