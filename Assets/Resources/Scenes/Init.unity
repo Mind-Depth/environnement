@@ -907,6 +907,31 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 7480138160241596116, guid: fdab89c529d17b04092447ec1955c922,
         type: 3}
+    - target: {fileID: 5667065022249503992, guid: 5cd7def724291744f81debbdcd183751,
+        type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: d72ab9e262242a64796525da2eb47c39, type: 3}
+    - target: {fileID: 5667065022249503992, guid: 5cd7def724291744f81debbdcd183751,
+        type: 3}
+      propertyPath: Loop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5667065022249503992, guid: 5cd7def724291744f81debbdcd183751,
+        type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5667065022249503992, guid: 5cd7def724291744f81debbdcd183751,
+        type: 3}
+      propertyPath: Priority
+      value: 23
+      objectReference: {fileID: 0}
+    - target: {fileID: 5667065022249503992, guid: 5cd7def724291744f81debbdcd183751,
+        type: 3}
+      propertyPath: m_Volume
+      value: 0.645
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 5667065022249503991, guid: 5cd7def724291744f81debbdcd183751, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 5cd7def724291744f81debbdcd183751, type: 3}

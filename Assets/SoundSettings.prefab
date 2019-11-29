@@ -44,10 +44,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e90440829e057148b2221410629c4d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  beforeStart: 0
-  repeat: 0
-  randomMin: 0
-  randomMax: 0
+  audioSource: {fileID: 0}
+  soundSettingsVariables:
+    beforeStart: 0
+    repeat: 0
+    randomMin: 0
+    randomMax: 0
+    loop: 0
 --- !u!82 &4626018802456906493
 AudioSource:
   m_ObjectHideFlags: 0
@@ -60,13 +63,13 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.814
   m_Pitch: 1
   Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 64
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500

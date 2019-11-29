@@ -20,7 +20,7 @@ public class IntroSoundManager : MonoBehaviour
     void Start()
     {
         for (int i = 0; i < SoundClips.Length; i++) {
-            GameObject tmp = Instantiate(SoundSettingsPrefab, new Vector3(0, 0, 0), Quaternion.identity);
+            GameObject tmp = Instantiate(SoundSettingsPrefab, transform);
             SoundSettingsList.Add(tmp.GetComponent<SoundSettings>());
             SoundSettingsList[i].audioSource.clip = SoundClips[i];
             SoundSettingsList[i].soundSettingsVariables = SoundSettingsVariables[i];

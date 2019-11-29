@@ -12,6 +12,7 @@ public class ActiveLightIntro : MonoBehaviour
     public PostProcessProfile ppp;
     public PostProcessProfile pppSave;
     public bool ActiveLight = true;
+    public bool triggerSam = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -36,6 +37,9 @@ public class ActiveLightIntro : MonoBehaviour
             }
             for (int i = 0; i < lightMaterial.Length; i++) {
                 lightMaterial[i].SetActive(ActiveLight);
+            }
+            if (triggerSam) {
+                Sam.TriggerManager._instance.UpdateTriggerEvents();
             }
     }
 }

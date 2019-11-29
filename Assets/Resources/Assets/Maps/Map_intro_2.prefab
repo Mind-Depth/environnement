@@ -100,6 +100,7 @@ MonoBehaviour:
   ppp: {fileID: 11400000, guid: 63eaeb5bfe9a5d246b1180eee9553196, type: 2}
   pppSave: {fileID: 0}
   ActiveLight: 1
+  triggerSam: 1
 --- !u!114 &6128616142132799710
 MonoBehaviour:
   m_ObjectHideFlags: 0
