@@ -18,6 +18,9 @@ public class EnvironmentMessage
         Terminate,
         Initialize,
         RequestRoom,
+        ScreenShotStart,
+        ScreenShotChunk,
+        ScreenShotEnd,
     };
 
     public Type type;

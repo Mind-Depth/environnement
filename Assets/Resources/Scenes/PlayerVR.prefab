@@ -224,6 +224,7 @@ GameObject:
   - component: {fileID: 8044687704322470939}
   - component: {fileID: 1993870856}
   - component: {fileID: 3079918014781246684}
+  - component: {fileID: 4237085181056634953}
   m_Layer: 0
   m_Name: PlayerVR
   m_TagString: Player
@@ -291,9 +292,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0f3a2843eb84a847aac5734621bcc64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: -9.2
   Player: {fileID: 2809836071946589899}
 --- !u!114 &3079918014781246684
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1221830742046064569}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c279cec2de74c4e499569407801d8558, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultHeight: 1.8
+--- !u!114 &4237085181056634953
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

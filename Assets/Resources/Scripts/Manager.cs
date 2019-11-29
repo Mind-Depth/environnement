@@ -3,6 +3,7 @@ using System;
 using UnityEngine.UI;
 using System.Collections;
 using Sam;
+using UnityEngine.SceneManagement;
 /**
 * Classe principale instanciée au lancement du programme.  
 * Elle instancie les différents threads utilisés par l'Intelligence artificielle.
@@ -12,6 +13,9 @@ public class Manager : MonoBehaviour
 {
     public static Manager _instance = null;
     public Client generation_client;
+
+    private int screenShotChunkSize = 10000;
+    public Camera screenShotCamera;
 
     public string configuration_root;
     public static Configuration configuration;
@@ -25,21 +29,14 @@ public class Manager : MonoBehaviour
     /* Connexion entre génération & environnement établie. */
     private bool is_connected = false;
 
-    /* Première pièce crée pour commencer le jeu */
-    private bool is_started = false;
-
     /* Variable de récupération des données de la queue */
     private GenerationMessage response;
     private void Awake()
     {
         if (_instance == null)
-        {
             _instance = this;
-        }
         else if (_instance != this)
-        {
             Destroy(this);
-        }
     }
 
     void Start()
@@ -63,6 +60,38 @@ public class Manager : MonoBehaviour
 
         /* Prévenir la partie génération l'état des fichiers. */
         queue_watchers_data.Enqueue(new EnvironmentMessage {type = EnvironmentMessage.Type.Initialize});
+        LoadWaitScene();
+    }
+
+    void SendScreenShotChunk(string screenshot, int chunk, int size)
+    {
+        queue_watchers_data.Enqueue(new EnvironmentMessage {
+            type = EnvironmentMessage.Type.ScreenShotChunk,
+            message = screenshot.Substring(chunk * screenShotChunkSize, size)
+        });
+    }
+
+    void SendScreenShot()
+    {
+        string screenshot = Convert.ToBase64String(ScreenShot.Capture(screenShotCamera));
+        int chunks = screenshot.Length / screenShotChunkSize;
+        int reminder = screenshot.Length % screenShotChunkSize;
+        queue_watchers_data.Enqueue(new EnvironmentMessage { type = EnvironmentMessage.Type.ScreenShotStart });
+        for (int i = 0; i < chunks; ++i)
+            SendScreenShotChunk(screenshot, i, screenShotChunkSize);
+        if (reminder > 0)
+            SendScreenShotChunk(screenshot, chunks, reminder);
+        queue_watchers_data.Enqueue(new EnvironmentMessage { type = EnvironmentMessage.Type.ScreenShotEnd });
+    }
+
+    void LoadWaitScene()
+    {
+        SceneManager.LoadScene("WaitingRoom");
+    }
+
+    void LoadGameScene()
+    {
+        SceneManager.LoadScene("EmptyGame");
     }
 
     private void Init()
@@ -99,18 +128,19 @@ public class Manager : MonoBehaviour
                 switch (response.type)
                 {
                     case GenerationMessage.Type.RoomConfiguration:
-                        if (is_started)
-                            Orchestration._instance.GenerateNewMap(response);
+                        Orchestration._instance.GenerateNewMap(response);
+                        SendScreenShot();
                         break;
                     case GenerationMessage.Type.FearLevel:
                         TriggerManager._instance.UpdateFear(response.fearIntensity);
                         break;
                     case GenerationMessage.Type.Quit:
                         Console._instance.AddLog("Endding game.");
+                        LoadWaitScene();
                         break;
                     case GenerationMessage.Type.Start:
                         Console._instance.AddLog("Starting game.");
-                        is_started = true;
+                        LoadGameScene();
                         RoomManager._instance.RequestRoom();
                         break;
                     case GenerationMessage.Type.Terminate:
