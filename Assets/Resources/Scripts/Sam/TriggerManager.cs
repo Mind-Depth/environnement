@@ -338,11 +338,11 @@ namespace Sam
                 samLineManager.CleanPipe();
                 ConfigureSoundSecondRoom();
             }
-            else if (currentRoom.GetRoomName() == "Claustrophobia" && currentRoom.FindSamTagsByName() != null && currentRoom.FindSamTagsByName("moving_room") == "moving_room")
+            else if (currentRoom.GetRoomName() == "Claustrophobia" && currentRoom.FindSamTagsByName("moving_room") != null &&  currentRoom.FindSamTagsByName("moving_room").name == "moving_room")
             {
                 samLineManager.CleanPipe();
                 ConfigureSoundClaustrophobiaRoom();
-            } else if (currentRoom.GetRoomName() == "Arachnophobia" && currentRoom.FindSamTagsByName() != null && currentRoom.FindSamTagsByName("spider") == "spider")
+            } else if (currentRoom.GetRoomName() == "Arachnophobia" && currentRoom.FindSamTagsByName("moving_room") != null && currentRoom.FindSamTagsByName("spider").name == "spider")
             {
                 samLineManager.CleanPipe();
                 ConfigureSoundArachnophobiaRoom();
@@ -364,12 +364,12 @@ namespace Sam
                 samLineManager.CleanPipe();
                 ConfigureSoundSecondRoomAfterCta();
             }
-            if (currentRoom.GetRoomName() == "Claustrophobia" && currentRoom.FindSamTagsByName() != null && currentRoom.FindSamTagsByName("moving_room") == "moving_room")
+            if (currentRoom.GetRoomName() == "Claustrophobia" && currentRoom.FindSamTagsByName("moving_room") != null && currentRoom.FindSamTagsByName("moving_room").name == "moving_room")
             {
                 samLineManager.CleanPipe();
                 ConfigureSoundClaustrophobiaRoomAfterCta();
             }
-            else if (currentRoom.GetRoomName() == "Arachnophobia" && currentRoom.FindSamTagsByName() != null && currentRoom.FindSamTagsByName("spider") == "spider")
+            else if (currentRoom.GetRoomName() == "Arachnophobia" && currentRoom.FindSamTagsByName("moving_room") != null && currentRoom.FindSamTagsByName("spider").name == "spider")
             {
                 samLineManager.CleanPipe();
                 ConfigureSoundArachnophobiaRoomCTA();
