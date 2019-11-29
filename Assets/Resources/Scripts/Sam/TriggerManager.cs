@@ -45,6 +45,7 @@ namespace Sam
         private Room oldRoom;
         private MoodManager moodPlayMode;
         private MoodHelperManager moodHelperManager;
+        private int incIntroduction = 0;
 
         public MindStates mindStates = MindStates.PSYCHOPATHE;
         private MindStates oldMindStates = MindStates.HELPER;
@@ -327,14 +328,15 @@ namespace Sam
             if (states.GetGameState() != GameStates.PLAY_MODE) {
                 states.SetGameState(GameStates.PLAY_MODE);
             }
+            ++incIntroduction;
             currentRoom = new Room(fearType.ToString(), fearIntensity, fearType, tags, Time.time);
-            if (currentRoom.GetRoomName() == "first_room")
+            if (incIntroduction == 1)
             {
                 states.SetGameState(GameStates.INTRODUCTION);
                 samLineManager.CleanPipe();
                 ConfigureSoundFirstRoom();
             }
-            else if (currentRoom.GetRoomName() == "second_room")
+            else if (incIntroduction == 2)
             {
                 states.SetGameState(GameStates.INTRODUCTION);
                 samLineManager.CleanPipe();
