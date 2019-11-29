@@ -45,7 +45,7 @@ namespace Sam
         private Room oldRoom;
         private MoodManager moodPlayMode;
         private MoodHelperManager moodHelperManager;
-        private int incIntroduction = 0;
+        private int incIntroductionRoom = 0;
 
         public MindStates mindStates = MindStates.PSYCHOPATHE;
         private MindStates oldMindStates = MindStates.HELPER;
@@ -86,8 +86,9 @@ namespace Sam
 
         private void ConfigureSoundFirstRoom()
         {
+            samLineManager.PausePipe(6.0f);
             samLineManager.AddToPipe(samLineManager.FindIntroductionByName("intro_allumage_de_la_radio"));
-            samLineManager.PausePipe(3.0f);
+            samLineManager.PausePipe(4.0f);
             samLineManager.AddToPipe(samLineManager.FindIntroductionByName("depeche_toi_sors_d_ici_il_arrive"));
             samLineManager.PausePipe(3.0f);
             samLineManager.AddToPipe(samLineManager.FindIntroductionByName("vas_au_fond_et_sors_de_suite"));
@@ -275,19 +276,18 @@ namespace Sam
 
         private void Update()
         {
-            // TODO: Correctly call all SamLinesManager functions.
-            // TODO: Modify mood with mood Manager and pass new moods in SamLinesManager class. 
             if (Time.time > nextTurn) {
-                if (states.GetGameState() == GameStates.INTRODUCTION)
-                {
-                    Debug.Log("INTRODUCTION IS PLAYING.");
-                } else if (states.GetGameState() == GameStates.PLAY_MODE)
+                if (states.GetGameState() == GameStates.PLAY_MODE)
                 {
                     if (userFeelingVariation == 0) {
                         userFeelingVariation = moodIntroduction.GetUserFeelingVariation(Time.time);
                         moodPlayMode.SetUserFeelingVariation(userFeelingVariation);
                     }
                     moodPlayMode.ComputeMood(fearLevel, currentRoom.GetTimeSpent());
+                    if (states.GetMindState() == MindStates.HELPER && samLineManager.GetCurrentLine() != null && samLineManager.GetCurrentLine().mood == "anger")
+                    {
+                        states.SetMindState(MindStates.PSYCHOPATHE);
+                    }
                 }
                 nextTurn += 1;
             }
@@ -308,8 +308,6 @@ namespace Sam
             {
                 fearLevel = (int)newFearLevel;
                 moodIntroduction.IncrementUserFeelingChangement();
-                //Debug.Log("DebugLog/ [SAM] received a fear level of " + fearLevel.ToString());
-                //Console._instance.AddLog("ConsoleInstance/ [SAM] received a fear level of " + fearLevel.ToString());
             }
         }
         public void SpiderFearTrigger()
@@ -323,30 +321,28 @@ namespace Sam
 
         public void UpdateRoomConfig(List<SamTags> tags, Fear fearType, float fearIntensity)
         {
-            string msg = "[SAM] received a room config room " + fearType.ToString() + " and intensity " + fearIntensity.ToString();
-            Debug.Log("UpdateRoomConfig -- " + msg);
             if (states.GetGameState() != GameStates.PLAY_MODE) {
                 states.SetGameState(GameStates.PLAY_MODE);
             }
-            ++incIntroduction;
+            ++incIntroductionRoom;
             currentRoom = new Room(fearType.ToString(), fearIntensity, fearType, tags, Time.time);
-            if (incIntroduction == 1)
+            if (incIntroductionRoom == 1)
             {
                 states.SetGameState(GameStates.INTRODUCTION);
                 samLineManager.CleanPipe();
                 ConfigureSoundFirstRoom();
             }
-            else if (incIntroduction == 2)
+            else if (incIntroductionRoom == 2)
             {
                 states.SetGameState(GameStates.INTRODUCTION);
                 samLineManager.CleanPipe();
                 ConfigureSoundSecondRoom();
             }
-            else if (currentRoom.GetRoomName() == "Claustrophobia")
+            else if (currentRoom.GetRoomName() == "Claustrophobia" && currentRoom.FindSamTagsByName() != null && currentRoom.FindSamTagsByName("moving_room") == "moving_room")
             {
                 samLineManager.CleanPipe();
                 ConfigureSoundClaustrophobiaRoom();
-            } else if (currentRoom.GetRoomName() == "Arachnophobia")
+            } else if (currentRoom.GetRoomName() == "Arachnophobia" && currentRoom.FindSamTagsByName() != null && currentRoom.FindSamTagsByName("spider") == "spider")
             {
                 samLineManager.CleanPipe();
                 ConfigureSoundArachnophobiaRoom();
@@ -359,28 +355,21 @@ namespace Sam
                 samLineManager.CleanPipe();
                 ConfigureSoundNyctophobiaRoom();
             }
-            //samLineManager.CleanPipe();
-            //Console._instance.AddLog("ConsoleInstance -- " + msg);
         }
 
         public void UpdateTriggerEvents()
         {
-            string msg = "[SAM] received a event is trigger ";
-            Debug.Log("UpdateTriggerEvents -- " + msg);
-            //samLineManager.CleanPipe();
-            //ConfigureSoundArachnophobiaRoomCTA();
-            //SpiderFearTrigger();
-            if (currentRoom.GetRoomName() == "second_room")
+            if (incIntroductionRoom == 2)
             {
                 samLineManager.CleanPipe();
                 ConfigureSoundSecondRoomAfterCta();
             }
-            if (currentRoom.GetRoomName() == "Claustrophobia")
+            if (currentRoom.GetRoomName() == "Claustrophobia" && currentRoom.FindSamTagsByName() != null && currentRoom.FindSamTagsByName("moving_room") == "moving_room")
             {
                 samLineManager.CleanPipe();
                 ConfigureSoundClaustrophobiaRoomAfterCta();
             }
-            else if (currentRoom.GetRoomName() == "Arachnophobia")
+            else if (currentRoom.GetRoomName() == "Arachnophobia" && currentRoom.FindSamTagsByName() != null && currentRoom.FindSamTagsByName("spider") == "spider")
             {
                 samLineManager.CleanPipe();
                 ConfigureSoundArachnophobiaRoomCTA();
@@ -395,7 +384,6 @@ namespace Sam
                 samLineManager.CleanPipe();
                 ConfigureSoundNyctophobiaRoomCTA();
             }
-            //Console._instance.AddLog("ConsoleInstance --" + msg);
         }
     }
 }

@@ -58,7 +58,13 @@ namespace Sam
         public Fear GetFearType()
         { return this.fearType; }
 
-        public List<SamTags> SetSamTags()
+        public List<SamTags> GetSamTags()
         { return this.samTags; }
+
+        // Find
+
+        public SamTags FindSamTagsByName(string name)
+        { return GetSamTags.Find((tag) => tag.name == name); }
+
     }
 }
