@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1277947774480154756}
   - component: {fileID: 8280844370642742635}
   - component: {fileID: 1929780675777170189}
+  - component: {fileID: 6163330330562745673}
   m_Layer: 0
   m_Name: Spider Spawner
   m_TagString: Untagged
@@ -65,3 +66,17 @@ MonoBehaviour:
   id: 
   description: toto
   fears: 00000000
+--- !u!114 &6163330330562745673
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7480138160241596116}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4f687ff11d5f4048ba64c4052916afe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  name: spider
+  isTriggable: 0
