@@ -252,7 +252,7 @@ namespace Sam
         {
             if (states.GetMindState() == MindStates.HELPER)
             {
-                //samLineManager.AddToPipe(samLineManager.FindHelperByName("alors_ca_a_marche"));
+                samLineManager.AddToPipe(samLineManager.FindHelperByName("alors_ca_a_marche"));
             }
         }
 
@@ -321,11 +321,18 @@ namespace Sam
 
         public void UpdateRoomConfig(List<SamTags> tags, Fear fearType, float fearIntensity)
         {
+            samLineManager.CleanPipe();
             if (states.GetGameState() != GameStates.PLAY_MODE) {
                 states.SetGameState(GameStates.PLAY_MODE);
             }
             ++incIntroductionRoom;
             currentRoom = new Room(fearType.ToString(), fearIntensity, fearType, tags, Time.time);
+            Debug.Log("wuuuut");
+            if (currentRoom.GetSamTags().Count > 0) {
+                Debug.Log("Room Name :: " + currentRoom.GetRoomName() + ", tags :: " + currentRoom.GetSamTags()[0].name);
+            } else {
+                Debug.Log("Room Name :: " + currentRoom.GetRoomName());
+            }
             if (incIntroductionRoom == 1)
             {
                 states.SetGameState(GameStates.INTRODUCTION);
@@ -337,20 +344,20 @@ namespace Sam
                 states.SetGameState(GameStates.INTRODUCTION);
                 samLineManager.CleanPipe();
                 ConfigureSoundSecondRoom();
-            }
-            else if (currentRoom.GetRoomName() == "Claustrophobia" && currentRoom.FindSamTagsByName("moving_room") != null &&  currentRoom.FindSamTagsByName("moving_room").name == "moving_room")
-            {
-                samLineManager.CleanPipe();
-                ConfigureSoundClaustrophobiaRoom();
-            } else if (currentRoom.GetRoomName() == "Arachnophobia" && currentRoom.FindSamTagsByName("moving_room") != null && currentRoom.FindSamTagsByName("spider").name == "spider")
-            {
-                samLineManager.CleanPipe();
-                ConfigureSoundArachnophobiaRoom();
-            } else if (currentRoom.GetRoomName() == "Vertigo")
+            }else if (currentRoom.FindSamTagsByName("Jumps") != null)
             {
                 samLineManager.CleanPipe();
                 ConfigureSoundVertigoRoom();
-            } else if (currentRoom.GetRoomName() == "Nyctophobia")
+            }
+            else if (currentRoom.FindSamTagsByName("moving_room") != null && currentRoom.FindSamTagsByName("moving_room").name == "moving_room")
+            {
+                samLineManager.CleanPipe();
+                ConfigureSoundClaustrophobiaRoom();
+            } else if (currentRoom.FindSamTagsByName("spider") != null && currentRoom.FindSamTagsByName("spider").name == "spider")
+            {
+                samLineManager.CleanPipe();
+                ConfigureSoundArachnophobiaRoom();
+            }  else if (currentRoom.FindSamTagsByName("Interupt") != null)
             {
                 samLineManager.CleanPipe();
                 ConfigureSoundNyctophobiaRoom();
@@ -364,22 +371,23 @@ namespace Sam
                 samLineManager.CleanPipe();
                 ConfigureSoundSecondRoomAfterCta();
             }
-            if (currentRoom.GetRoomName() == "Claustrophobia" && currentRoom.FindSamTagsByName("moving_room") != null && currentRoom.FindSamTagsByName("moving_room").name == "moving_room")
+            if (currentRoom.FindSamTagsByName("moving_room") != null && currentRoom.FindSamTagsByName("moving_room").name == "moving_room")
             {
                 samLineManager.CleanPipe();
                 ConfigureSoundClaustrophobiaRoomAfterCta();
             }
-            else if (currentRoom.GetRoomName() == "Arachnophobia" && currentRoom.FindSamTagsByName("moving_room") != null && currentRoom.FindSamTagsByName("spider").name == "spider")
+            else if (currentRoom.FindSamTagsByName("spider") != null && currentRoom.FindSamTagsByName("spider").name == "spider")
             {
                 samLineManager.CleanPipe();
                 ConfigureSoundArachnophobiaRoomCTA();
+                SpiderFearTrigger();
             }
-            else if (currentRoom.GetRoomName() == "Vertigo")
+            else if (currentRoom.FindSamTagsByName("Jumps") != null)
             {
                 samLineManager.CleanPipe();
                 ConfigureSoundVertigoRoomCTA();
             }
-            else if (currentRoom.GetRoomName() == "Nyctophobia")
+            else if (currentRoom.FindSamTagsByName("Interupt") != null)
             {
                 samLineManager.CleanPipe();
                 ConfigureSoundNyctophobiaRoomCTA();

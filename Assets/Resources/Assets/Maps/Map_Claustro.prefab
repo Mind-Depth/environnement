@@ -163,7 +163,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85aeb9e59ef364f4c94e2c5160142733, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 
+  id: 204263dd-89f5-4382-9fbb-e6bda058e6b4
   fear: 3
   generic: 0
   intro: -1
@@ -2353,6 +2353,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 3.5000038
       objectReference: {fileID: 0}
+    - target: {fileID: 5935257513910052114, guid: f18318a9de51f9b4f993559b01c40e15,
+        type: 3}
+      propertyPath: id
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f18318a9de51f9b4f993559b01c40e15, type: 3}
 --- !u!4 &6815839510886399198 stripped
@@ -2952,6 +2957,11 @@ PrefabInstance:
     - target: {fileID: 412966, guid: f18318a9de51f9b4f993559b01c40e15, type: 3}
       propertyPath: m_LocalScale.z
       value: 3.500002
+      objectReference: {fileID: 0}
+    - target: {fileID: 5935257513910052114, guid: f18318a9de51f9b4f993559b01c40e15,
+        type: 3}
+      propertyPath: id
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f18318a9de51f9b4f993559b01c40e15, type: 3}

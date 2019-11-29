@@ -111,6 +111,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbd403260cb6f4b4ebdc1abd40a03fe5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &6787261195874931534
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1618734360149051411}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4f687ff11d5f4048ba64c4052916afe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  name: Jumps
+  isTriggable: 0
 --- !u!1 &2928890729202754347
 GameObject:
   m_ObjectHideFlags: 0
@@ -378,6 +392,7 @@ GameObject:
   - component: {fileID: 8544365592141655587}
   - component: {fileID: 8544365592141655588}
   - component: {fileID: 35772418}
+  - component: {fileID: 1794605221}
   m_Layer: 0
   m_Name: Map_Vertigo
   m_TagString: Untagged
@@ -431,7 +446,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85aeb9e59ef364f4c94e2c5160142733, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 
+  id: 50f25160-5176-46e8-8c50-70da4b8a1f91
   fear: 1
   generic: 0
   intro: -1
@@ -510,6 +525,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5c87a268059e0d4baa1f0b95148d4e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1794605221
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8544365592141655585}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4f687ff11d5f4048ba64c4052916afe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  name: Jumps
+  isTriggable: 0
 --- !u!1001 &487008640
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1974,6 +2003,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2172773449567808474}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1618734360149051411 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 599501715263513545, guid: 1423e92c953eb00478d97271ad2eabc3,
+    type: 3}
+  m_PrefabInstance: {fileID: 2172773449567808474}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2430413874153481723
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3240,6 +3275,11 @@ PrefabInstance:
     - target: {fileID: 492730, guid: 38acd8f33333a454aa8e10b6297ab6c8, type: 3}
       propertyPath: m_LocalScale.z
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3075363771188074302, guid: 38acd8f33333a454aa8e10b6297ab6c8,
+        type: 3}
+      propertyPath: id
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 38acd8f33333a454aa8e10b6297ab6c8, type: 3}

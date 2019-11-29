@@ -382,11 +382,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Map_3
       objectReference: {fileID: 0}
-    - target: {fileID: 4298636415647269992, guid: a96a34b02038524498b408c9872fdc8c,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8666360733893292043, guid: a96a34b02038524498b408c9872fdc8c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -843,11 +838,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Map_Robin
       objectReference: {fileID: 0}
-    - target: {fileID: 5171123730317143882, guid: 6201145a2b3b4704b9159f37497c51a2,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2801883050697633656, guid: 6201145a2b3b4704b9159f37497c51a2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -917,11 +907,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Map_5
       objectReference: {fileID: 0}
-    - target: {fileID: 4298636415647269992, guid: a910ea24299be5441b0e2f4982db5d7d,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8666360733893292043, guid: a910ea24299be5441b0e2f4982db5d7d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -945,7 +930,7 @@ PrefabInstance:
     - target: {fileID: 8666360733893292043, guid: a910ea24299be5441b0e2f4982db5d7d,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 8666360733893292043, guid: a910ea24299be5441b0e2f4982db5d7d,
         type: 3}
@@ -955,7 +940,7 @@ PrefabInstance:
     - target: {fileID: 8666360733893292043, guid: a910ea24299be5441b0e2f4982db5d7d,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 8666360733893292043, guid: a910ea24299be5441b0e2f4982db5d7d,
         type: 3}
@@ -970,7 +955,7 @@ PrefabInstance:
     - target: {fileID: 8666360733893292043, guid: a910ea24299be5441b0e2f4982db5d7d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 8666360733893292043, guid: a910ea24299be5441b0e2f4982db5d7d,
         type: 3}
@@ -1064,11 +1049,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Map_4
-      objectReference: {fileID: 0}
-    - target: {fileID: 4298636415647269992, guid: 912bb08e4e59ee5468b9ea341f89f6a1,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8666360733893292043, guid: 912bb08e4e59ee5468b9ea341f89f6a1,
         type: 3}
@@ -2059,11 +2039,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Map_Vertigo
-      objectReference: {fileID: 0}
-    - target: {fileID: 8544365592141655585, guid: 2da8e3471192c421b9c130d3eb0764ac,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8165823920410567755, guid: 2da8e3471192c421b9c130d3eb0764ac,
         type: 3}

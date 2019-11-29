@@ -225,7 +225,7 @@ namespace Sam
         public void Play(Line songToPlay)
         {
             currentSongDuration = Time.time + songToPlay.duration;
-            if (songToPlay.name != "blank")
+            if (songToPlay.name != "blank" && songToPlay != null)
             {
                 soundManager.LoadSound(songToPlay.name);
                 soundManager.PlaySound();

@@ -68,7 +68,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85aeb9e59ef364f4c94e2c5160142733, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 
+  id: e4d2c1b7-64b6-4ab3-8f37-e37b4fbf1af0
   fear: 0
   generic: 1
   intro: 0
