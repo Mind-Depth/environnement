@@ -707,16 +707,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 5667065022249503936, guid: 5cd7def724291744f81debbdcd183751,
-        type: 3}
-      propertyPath: m_Name
-      value: GameManager
-      objectReference: {fileID: 0}
-    - target: {fileID: 5667065022249503936, guid: 5cd7def724291744f81debbdcd183751,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5667065022249503993, guid: 5cd7def724291744f81debbdcd183751,
         type: 3}
       propertyPath: ppv
@@ -732,6 +722,16 @@ PrefabInstance:
       propertyPath: indication
       value: 
       objectReference: {fileID: 965346177}
+    - target: {fileID: 5667065022249503936, guid: 5cd7def724291744f81debbdcd183751,
+        type: 3}
+      propertyPath: m_Name
+      value: GameManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 5667065022249503936, guid: 5cd7def724291744f81debbdcd183751,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5667065022249503994, guid: 5cd7def724291744f81debbdcd183751,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -787,6 +787,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5667065022249503995, guid: 5cd7def724291744f81debbdcd183751,
+        type: 3}
+      propertyPath: configuration_root
+      value: ../config
+      objectReference: {fileID: 0}
+    - target: {fileID: 5667065022249503995, guid: 5cd7def724291744f81debbdcd183751,
+        type: 3}
+      propertyPath: screenShotCamera
+      value: 
+      objectReference: {fileID: 1589476407}
     - target: {fileID: 5667065022249503996, guid: 5cd7def724291744f81debbdcd183751,
         type: 3}
       propertyPath: console
@@ -891,16 +901,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8544365592141655585, guid: 2da8e3471192c421b9c130d3eb0764ac,
         type: 3}
-    - target: {fileID: 5667065022249503995, guid: 5cd7def724291744f81debbdcd183751,
-        type: 3}
-      propertyPath: configuration_root
-      value: D:\MyGamesDev\Unity\main\build\config
-      objectReference: {fileID: 0}
-    - target: {fileID: 5667065022249503995, guid: 5cd7def724291744f81debbdcd183751,
-        type: 3}
-      propertyPath: screenShotCamera
-      value: 
-      objectReference: {fileID: 1589476407}
     - target: {fileID: 5667065022249503991, guid: 5cd7def724291744f81debbdcd183751,
         type: 3}
       propertyPath: spwanerPrefab
