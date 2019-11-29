@@ -23,6 +23,7 @@ public class makeFall : MonoBehaviour
 
     private void OnTriggerEnter(Collider other) {
         if (other.tag == "Player") {
+            Sam.TriggerManager._instance.UpdateTriggerEvents();
             move = true;
         }
     }
