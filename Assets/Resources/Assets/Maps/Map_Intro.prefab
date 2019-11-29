@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3130758278079989781}
   - component: {fileID: 1723716246}
+  - component: {fileID: 1250547271640844157}
   m_Layer: 0
   m_Name: Map_Intro
   m_TagString: Untagged
@@ -54,6 +55,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5c87a268059e0d4baa1f0b95148d4e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1250547271640844157
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3130758278079989780}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85aeb9e59ef364f4c94e2c5160142733, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 
+  fear: 0
+  generic: 0
+  intro: 0
+  description: 
+  categories_config: []
 --- !u!1 &3130758278419746745
 GameObject:
   m_ObjectHideFlags: 0
@@ -1947,6 +1966,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Prop_Tech_Chamber_01 Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 8153032695392208214, guid: a4b96c4ef95eec4428a9fdbc7c637841,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8153032695391910952, guid: a4b96c4ef95eec4428a9fdbc7c637841,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2001,11 +2025,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8153032695392208214, guid: a4b96c4ef95eec4428a9fdbc7c637841,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3605010814346693971, guid: a4b96c4ef95eec4428a9fdbc7c637841,
         type: 3}
@@ -2236,15 +2255,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7418c7dd8f977d4e969202d3fa7e926, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!4 &3130758278506744388 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4735139070887566560, guid: 75284eb2012de9242b28ecae1cd02cbd,
-    type: 3}
-  m_PrefabInstance: {fileID: 7693317995439953572}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &3130758279643648365 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4735139071948769225, guid: 75284eb2012de9242b28ecae1cd02cbd,
+    type: 3}
+  m_PrefabInstance: {fileID: 7693317995439953572}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &3130758278506744388 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4735139070887566560, guid: 75284eb2012de9242b28ecae1cd02cbd,
     type: 3}
   m_PrefabInstance: {fileID: 7693317995439953572}
   m_PrefabAsset: {fileID: 0}

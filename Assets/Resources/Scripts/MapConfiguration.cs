@@ -6,6 +6,9 @@ using UnityEngine;
 public class MapConfiguration : MonoBehaviour
 {
     public string id;
+    public Fear fear;
+    public bool generic;
+    public int intro = -1;
     public string description;
 
     [Serializable]

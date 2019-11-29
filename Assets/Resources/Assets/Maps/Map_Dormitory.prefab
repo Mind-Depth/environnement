@@ -764,6 +764,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: 
+  fear: 0
+  generic: 1
+  intro: -1
   description: 
   categories_config:
   - use_min: 1
