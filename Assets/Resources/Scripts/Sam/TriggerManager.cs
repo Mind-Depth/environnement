@@ -267,7 +267,6 @@ namespace Sam
             } else if (stepClaustro == 2)
             {
                 samLineManager.AddToPipe(samLineManager.FindHelperByName("bouuuuge_pluuus"));
-                stepClaustro += 1;
                 states.SetMindState(MindStates.PSYCHOPATHE);
             }
         }

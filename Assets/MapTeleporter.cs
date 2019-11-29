@@ -25,4 +25,8 @@ public class MapTeleporter : MonoBehaviour
     public void HideIndication() {
         Teleporter._instance.HideIndication();
     }
+    public void SamTrigger()
+    {
+        Sam.TriggerManager._instance.UpdateTriggerEvents();
+    }
 }
