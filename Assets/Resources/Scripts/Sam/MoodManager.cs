@@ -25,7 +25,7 @@ namespace Sam
         {
             if (this.mood > Mood.HAPPYNESS)
             {
-                return "happy";
+                return "happyness";
             } else if (this.mood > Mood.EXITEMENT && this.mood < Mood.HAPPYNESS)
             {
                 return "exitement";
@@ -47,7 +47,7 @@ namespace Sam
             this.countUserFeelingChangement += 1;
         }
 
-        public float GetUserFeelingVariation(float timeSpentInGame)
+        public float ComputeUserFeelingVariation(float timeSpentInGame)
         {
             float userFeelingVariation = 0;
 
@@ -55,6 +55,11 @@ namespace Sam
             {
                 userFeelingVariation = (this.countUserFeelingChangement / timeSpentInGame) * 100;
             }
+            return userFeelingVariation;
+        }
+
+        public float GetUserFeelingVariation()
+        {
             return userFeelingVariation;
         }
 

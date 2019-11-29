@@ -40,7 +40,7 @@
         "mood": "anger",
         "fear": "claustrophobia",
         "callToAction": "do_not_move",
-        "step": "third"
+        "step": "final"
       },
       {
         "name": "bouuuuge_pluuus",
@@ -48,7 +48,7 @@
         "mood": "anger",
         "fear": "claustrophobia",
         "callToAction": "do_not_move",
-        "step": "third"
+        "step": "final"
       },
       {
         "name": "ouvre_la_trappe",
@@ -128,7 +128,7 @@
         "mood": "anger",
         "fear": "vertigo",
         "callToAction": "bridge",
-        "step": "third"
+        "step": "final"
       },
       {
         "name": "tu_sautes_ou_je_t_y_pousse",
@@ -136,7 +136,7 @@
         "mood": "anger",
         "fear": "vertigo",
         "callToAction": "bridge",
-        "step": "third"
+        "step": "final"
       },
       {
         "name": "dans_cette_salle_il_faut_rester_discret",
@@ -192,7 +192,7 @@
         "mood": "anger",
         "fear": "nyctophobia",
         "callToAction": "light_switch",
-        "step": "third"
+        "step": "final"
       },
       {
         "name": "aller_on_continue",
@@ -205,7 +205,7 @@
     ],
     "plot_twist": [
       {
-        "name": "fais_ce_que_je_te_dis_sale_merde",
+        "name": "fais_ce_que_je_te_dis_enerve",
         "duration": 4.0,
         "mood": "anger",
         "fear": "nyctophobia",

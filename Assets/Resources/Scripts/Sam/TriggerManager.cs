@@ -45,7 +45,7 @@ namespace Sam
         private Room oldRoom;
         private MoodManager moodPlayMode;
         private MoodHelperManager moodHelperManager;
-
+        private int incIntroductionRoom = 0;
         public MindStates mindStates = MindStates.PSYCHOPATHE;
         private MindStates oldMindStates = MindStates.HELPER;
 
@@ -229,7 +229,8 @@ namespace Sam
                 samLineManager.AddToPipe(samLineManager.FindHelperByName("fais_ce_que_je_te_dis_enerve"));
             } else if (states.GetMindState() == MindStates.PSYCHOPATHE)
             {
-                
+                Line lineSelected = samLineManager.SelectPsychopathe(moodPlayMode.GetMoodName(), currentRoom.GetRoomName().ToLower());
+                Debug.Log("Line selected::  " + lineSelected.name + " mood :: " + lineSelected.mood + " fear :: " + lineSelected.fear);
                 samLineManager.PausePipe(2.0f);
                 samLineManager.AddToPipe(samLineManager.FindPsychopatheByName("attention_de_ne_pas_marcher_sur_olivier"));
                 samLineManager.PausePipe(2.0f);
@@ -276,19 +277,23 @@ namespace Sam
 
         private void Update()
         {
-            // TODO: Correctly call all SamLinesManager functions.
-            // TODO: Modify mood with mood Manager and pass new moods in SamLinesManager class. 
             if (Time.time > nextTurn) {
-                if (states.GetGameState() == GameStates.INTRODUCTION)
+                if (states.GetGameState() == GameStates.PLAY_MODE)
                 {
-                    Debug.Log("INTRODUCTION IS PLAYING.");
-                } else if (states.GetGameState() == GameStates.PLAY_MODE)
-                {
-                    if (userFeelingVariation == 0) {
-                        userFeelingVariation = moodIntroduction.GetUserFeelingVariation(Time.time);
-                        moodPlayMode.SetUserFeelingVariation(userFeelingVariation);
+                    if (moodPlayMode.GetUserFeelingVariation() == 0) {
+                        moodIntroduction.ComputeUserFeelingVariation(Time.time);
+                        moodPlayMode.SetUserFeelingVariation(moodIntroduction.GetUserFeelingVariation());
                     }
                     moodPlayMode.ComputeMood(fearLevel, currentRoom.GetTimeSpent());
+                    if (states.GetMindState() != MindStates.PSYCHOPATHE)
+                    {
+                        Line currentLine = samLineManager.GetCurrentSound();
+
+                        if (currentLine != null && currentLine.mood == "anger" && currentLine.step == "final")
+                        {
+                            states.SetMindState(MindStates.PSYCHOPATHE);
+                        }
+                    }
                 }
                 nextTurn += 1;
             }
@@ -309,12 +314,11 @@ namespace Sam
             {
                 fearLevel = (int)newFearLevel;
                 moodIntroduction.IncrementUserFeelingChangement();
-                //Debug.Log("DebugLog/ [SAM] received a fear level of " + fearLevel.ToString());
-                //Console._instance.AddLog("ConsoleInstance/ [SAM] received a fear level of " + fearLevel.ToString());
             }
         }
         public void SpiderFearTrigger()
         {
+            // TODO: Modifier lapparition des spiders
             GameObject spiderSpwaner = Instantiate(spwanerPrefab, new Vector3(RandomNumber(200), 0, 0), Quaternion.identity);
             Spawner spSpwaner = spiderSpwaner.GetComponent<Spawner>();
             spSpwaner.minCount = 15;
@@ -324,29 +328,28 @@ namespace Sam
 
         public void UpdateRoomConfig(List<SamTags> tags, Fear fearType, float fearIntensity)
         {
-            string msg = "[SAM] received a room config room " + fearType.ToString() + " and intensity " + fearIntensity.ToString();
-            Debug.Log("UpdateRoomConfig -- " + msg);
             if (states.GetGameState() != GameStates.PLAY_MODE) {
                 states.SetGameState(GameStates.PLAY_MODE);
             }
             currentRoom = new Room(fearType.ToString(), fearIntensity, fearType, tags, Time.time);
-            if (currentRoom.GetRoomName() == "first_room")
+            ++incIntroductionRoom;
+            if (incIntroductionRoom == 1)
             {
                 states.SetGameState(GameStates.INTRODUCTION);
                 samLineManager.CleanPipe();
                 ConfigureSoundFirstRoom();
             }
-            else if (currentRoom.GetRoomName() == "second_room")
+            else if (incIntroductionRoom == 2)
             {
                 states.SetGameState(GameStates.INTRODUCTION);
                 samLineManager.CleanPipe();
                 ConfigureSoundSecondRoom();
             }
-            else if (currentRoom.GetRoomName() == "Claustrophobia")
+            else if (currentRoom.GetRoomName() == "Claustrophobia" && currentRoom.GetSamTags().Count > 0 && currentRoom.FindSamTagsByName("moving_wall").name == "moving_wall")
             {
                 samLineManager.CleanPipe();
                 ConfigureSoundClaustrophobiaRoom();
-            } else if (currentRoom.GetRoomName() == "Arachnophobia")
+            } else if (currentRoom.GetRoomName() == "Arachnophobia" && currentRoom.GetSamTags().Count > 0 && currentRoom.FindSamTagsByName("spider").name == "spider")
             {
                 samLineManager.CleanPipe();
                 ConfigureSoundArachnophobiaRoom();
@@ -359,23 +362,19 @@ namespace Sam
                 samLineManager.CleanPipe();
                 ConfigureSoundNyctophobiaRoom();
             }
-            //samLineManager.CleanPipe();
-            //Console._instance.AddLog("ConsoleInstance -- " + msg);
         }
 
         public void UpdateTriggerEvents()
         {
-            string msg = "[SAM] received a event is trigger ";
-            Debug.Log("UpdateTriggerEvents -- " + msg);
-            if (currentRoom.GetRoomName() == "second_room")
+            if (incIntroductionRoom == 2)
             {
                 samLineManager.CleanPipe();
                 ConfigureSoundSecondRoomAfterCta();
             }
-            if (currentRoom.GetRoomName() == "Claustrophobia") {
+            if (currentRoom.GetRoomName() == "Claustrophobia" && currentRoom.GetSamTags().Count > 0 && currentRoom.FindSamTagsByName("moving_wall").name == "moving_wall") {
                 samLineManager.CleanPipe();
                 ConfigureSoundClaustrophobiaRoomAfterCta();
-            } else if (currentRoom.GetRoomName() == "Arachnophobia")
+            } else if (currentRoom.GetRoomName() == "Arachnophobia" && currentRoom.GetSamTags().Count > 0 && currentRoom.FindSamTagsByName("spider").name == "spider")
             {
                 samLineManager.CleanPipe();
                 ConfigureSoundArachnophobiaRoomCTA();
@@ -388,7 +387,6 @@ namespace Sam
                 samLineManager.CleanPipe();
                 ConfigureSoundNyctophobiaRoomCTA();
             }
-            //Console._instance.AddLog("ConsoleInstance --" + msg);
         }
     }
 }

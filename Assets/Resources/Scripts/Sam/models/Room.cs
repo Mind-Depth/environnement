@@ -49,7 +49,7 @@ namespace Sam
         public float GetTimeSpent()
         { return this.timeSpent; }
 
-        public String GetRoomName()
+        public string GetRoomName()
         { return this.roomName; }
 
         public float GetIntensity()
@@ -58,7 +58,12 @@ namespace Sam
         public Fear GetFearType()
         { return this.fearType; }
 
-        public List<SamTags> SetSamTags()
+        public List<SamTags> GetSamTags()
         { return this.samTags; }
+
+        // Find
+
+        public SamTags FindSamTagsByName(string name)
+        { return samTags.Find((tag) => tag.name == name); }
     }
 }

@@ -68,6 +68,15 @@ namespace Sam
             }
         }
 
+        public Line GetCurrentSound()
+        {
+            if (this.pipe.Count > 0)
+            {
+                return this.pipe[0];
+            }
+            return null;
+        }
+
         // Return a number between 0 and the variable max
         public int RandomNumber(int max)
         { return UnityEngine.Random.Range(0, max); }
