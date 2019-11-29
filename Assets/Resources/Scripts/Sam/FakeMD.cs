@@ -85,12 +85,10 @@ namespace Sam
                 {
                     if (currentRoom == GAME_STATES.FIRST_ROOM)
                     {
-                        TriggerManager._instance.UpdateRoom("first_room");
                         oldRoom = currentRoom;
                     }
                     else if (currentRoom == GAME_STATES.SECOND_ROOM)
                     {
-                        TriggerManager._instance.UpdateRoom("second_room");
                         oldRoom = currentRoom;
                     }
                     else if (currentRoom == GAME_STATES.NORMAL_GAME)

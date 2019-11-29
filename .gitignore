@@ -25,6 +25,8 @@ ExportedObj/
 *.svd
 *.pdb
 *.opendb
+*.wav
+*.wav.meta
 
 # Unity3D generated meta files
 *.pidb.meta

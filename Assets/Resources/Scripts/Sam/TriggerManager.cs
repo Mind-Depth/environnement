@@ -312,30 +312,6 @@ namespace Sam
                 //Console._instance.AddLog("ConsoleInstance/ [SAM] received a fear level of " + fearLevel.ToString());
             }
         }
-
-        public void UpdateRoom(String roomName)
-        {
-            string msg = "[SAM] received a fear level of " + fearLevel.ToString();
-            Debug.Log("UpdateRoom -- " + msg);
-            currentRoom = new Room();
-            currentRoom.SetRoomName(roomName);
-            currentRoom.SetTimeSpent(Time.time);
-
-            states.SetGameState(GameStates.INTRODUCTION);
-
-            if (currentRoom.GetRoomName() == "first_room")
-            {
-                samLineManager.CleanPipe();
-                ConfigureSoundFirstRoom();
-            }
-            else if (currentRoom.GetRoomName() == "second_room")
-            {
-                samLineManager.CleanPipe();
-                ConfigureSoundSecondRoom();
-            }
-            //Console._instance.AddLog("ConsoleInstance -- " + msg);
-        }
-
         public void SpiderFearTrigger()
         {
             GameObject spiderSpwaner = Instantiate(spwanerPrefab, new Vector3(RandomNumber(200), 0, 0), Quaternion.identity);
@@ -353,8 +329,19 @@ namespace Sam
                 states.SetGameState(GameStates.PLAY_MODE);
             }
             currentRoom = new Room(fearType.ToString(), fearIntensity, fearType, tags, Time.time);
-
-            if (currentRoom.GetRoomName() == "Claustrophobia")
+            if (currentRoom.GetRoomName() == "first_room")
+            {
+                states.SetGameState(GameStates.INTRODUCTION);
+                samLineManager.CleanPipe();
+                ConfigureSoundFirstRoom();
+            }
+            else if (currentRoom.GetRoomName() == "second_room")
+            {
+                states.SetGameState(GameStates.INTRODUCTION);
+                samLineManager.CleanPipe();
+                ConfigureSoundSecondRoom();
+            }
+            else if (currentRoom.GetRoomName() == "Claustrophobia")
             {
                 samLineManager.CleanPipe();
                 ConfigureSoundClaustrophobiaRoom();
