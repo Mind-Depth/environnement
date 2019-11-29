@@ -10,20 +10,15 @@ using System.Runtime.Serialization;
 
 public class SoundSettings : MonoBehaviour
 {
-    private AudioSource audioSource;
+    public AudioSource audioSource;
     private int countLoop = 0;
     private float nextTurn = 0.0f;
     private float songPlayedDuration = 0.0f;
-
-    public float beforeStart = 0.0f;
-    public float repeat = 0.0f;
-    public int randomMin = 0;
-    public int randomMax = 0;
+    public SoundSettingsVariable soundSettingsVariables; 
 
     void Awake()
     {
         audioSource = GetComponent<AudioSource>();
-        beforeStart += Time.time;
     }
 
     private bool SongIsPlaying()
@@ -48,15 +43,15 @@ public class SoundSettings : MonoBehaviour
 
     private void Update()
     {
-        if (countLoop <= repeat)
+        if (countLoop <= soundSettingsVariables.repeat)
         {
-            if (Time.time > beforeStart)
+            if (Time.time > soundSettingsVariables.beforeStart)
             {
                 if (!SongIsPlaying())
                 {
                     Play();
                 }
-                beforeStart += (float)RandomNumber(randomMin, randomMax);
+                soundSettingsVariables.beforeStart += (float)RandomNumber(soundSettingsVariables.randomMin, soundSettingsVariables.randomMax);
             }
         }
     }
