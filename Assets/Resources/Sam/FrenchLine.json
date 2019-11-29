@@ -241,7 +241,7 @@
         "name": "ah_mais_merde_on_dirait_quelqu_un_qui_va_mourrir",
         "duration": 2.0,
         "mood": "happyness",
-        "fear": "claustrophobia",
+        "fear": "all",
         "callToAction": "exitment",
         "step": ""
       },
@@ -257,7 +257,7 @@
         "name": "tu_kiffes_hein",
         "duration": 1.0,
         "mood": "exitement",
-        "fear": "arachnophobia",
+        "fear": "all",
         "callToAction": "",
         "step": ""
       },
@@ -265,7 +265,7 @@
         "name": "tu_pourras_pas_fuir_toute_ta_vie",
         "duration": 2.0,
         "mood": "frustrated",
-        "fear": "arachnophobia",
+        "fear": "all",
         "callToAction": "",
         "step": ""
       },
@@ -273,7 +273,7 @@
         "name": "creve",
         "duration": 2.0,
         "mood": "anger",
-        "fear": "arachnophobia",
+        "fear": "all",
         "callToAction": "",
         "step": ""
       },
@@ -289,7 +289,7 @@
         "name": "oh_oui_j_adoooore",
         "duration": 2.0,
         "mood": "happyness",
-        "fear": "arachnophobia",
+        "fear": "all",
         "callToAction": "",
         "step": ""
       },
@@ -329,7 +329,7 @@
         "name": "tu_m_as_fais_confiance_jusqu_ici_et_tu_arretes",
         "duration": 3.0,
         "mood": "frustrated",
-        "fear": "vertigo",
+        "fear": "all",
         "callToAction": "",
         "step": ""
       },
@@ -345,7 +345,7 @@
         "name": "attention_derriere_toi_2",
         "duration": 4.0,
         "mood": "happyness",
-        "fear": "nyctophobia",
+        "fear": "all",
         "callToAction": "",
         "step": ""
       },

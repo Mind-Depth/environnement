@@ -132,7 +132,12 @@ namespace Sam
         public Line FindIntroductionByCTA(string cta)
         { return GetIntroduction().Find((intro) => intro.callToAction.Contains(cta)); }
 
+        // Mood && Fear
 
+        public List<Line> FindPsychopatheByMoodAndFearAndAll(string mood, string fear)
+        {
+            return GetPsychopathe().FindAll((psychopathe) => psychopathe.mood == mood && (psychopathe.fear == fear || psychopathe.fear == "all"));
+        }
         /*public string[] LinesToStringArray(Lines l)
         {
             List<string> samLines = new List<string>();

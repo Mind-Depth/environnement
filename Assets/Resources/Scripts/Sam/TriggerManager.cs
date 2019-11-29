@@ -229,6 +229,7 @@ namespace Sam
                 samLineManager.AddToPipe(samLineManager.FindHelperByName("fais_ce_que_je_te_dis_enerve"));
             } else if (states.GetMindState() == MindStates.PSYCHOPATHE)
             {
+                
                 samLineManager.PausePipe(2.0f);
                 samLineManager.AddToPipe(samLineManager.FindPsychopatheByName("attention_de_ne_pas_marcher_sur_olivier"));
                 samLineManager.PausePipe(2.0f);

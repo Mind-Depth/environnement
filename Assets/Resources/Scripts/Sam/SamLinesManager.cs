@@ -68,6 +68,10 @@ namespace Sam
             }
         }
 
+        // Return a number between 0 and the variable max
+        public int RandomNumber(int max)
+        { return UnityEngine.Random.Range(0, max); }
+
         public Line FindIntroductionByName(string name)
         { return samLinesJson.FindIntroductionByName(name); }
 
@@ -82,6 +86,12 @@ namespace Sam
 
         public List<Line> FindHelper(string cta, string fear, string mood, string step)
         { return samLinesJson.FindHelper(cta, fear, mood, step); }
+
+        public Line SelectPsychopathe(string mood, string fear)
+        {
+            List<Line> line = samLinesJson.FindPsychopatheByMoodAndFearAndAll(mood, fear);
+            return line[RandomNumber(line.Count)];
+        }
 
         public void AddListToPipe(List<Line> list)
         {
